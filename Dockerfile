@@ -14,14 +14,9 @@ ENV \
   PIP_NO_CACHE_DIR=off \
   PIP_DISABLE_PIP_VERSION_CHECK=on \
   PIP_DEFAULT_TIMEOUT=100 \
-  # dockerize:
-  DOCKERIZE_VERSION=v0.6.1 \
   # poetry:
   POETRY_VERSION=1.1.11 \
   POETRY_NO_INTERACTION=1 \
-  # TODO venvs are good after all in docker? https://github.com/python-poetry/poetry/issues/4493
-  #POETRY_VIRTUALENVS_CREATE=false \
-  POETRY_CACHE_DIR='/var/cache/pypoetry' \
   PATH="$PATH:/root/.local/bin"
 
 
@@ -48,12 +43,11 @@ COPY poetry.lock pyproject.toml /code/
 
 # Project initialization:
 RUN poetry install --no-dev --no-ansi
-  # Cleaning poetry installation's cache
-  #&& rm -rf "$POETRY_CACHE_DIR"
 
 # Creating folders, and files for a project:
 COPY tardsquad_discord_bot/ /code/tardsquad_discord_bot
+# Needed as required by pyproject.toml
 COPY CHANGELOG.md LICENSE README.md /code
 
 # We customize how our app is loaded with the custom entrypoint:
-ENTRYPOINT ["poetry", "run", "tardsquad-bot"]
+ENTRYPOINT ["poetry", "run", "tardsquad-discord-bot"]
