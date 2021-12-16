@@ -22,7 +22,7 @@ importlib-metadata = "^4.0"  # To support python 3.7. See __init__.py
 
 [tool.poetry.dev-dependencies]
 autoflake = "^1.4"
-autoimport = "^0.9"
+autoimport = "^0.10"
 black = "^21.11b1"
 flake8 = "^4.0"
 ipdb = "^0.13"
