@@ -2,10 +2,10 @@
 [![PyPI version](https://badge.fury.io/py/tardsquad-discord-bot.svg)](https://badge.fury.io/py/tardsquad-discord-bot)
 [![Downloads](https://pepy.tech/badge/tardsquad-discord-bot)](https://pepy.tech/project/tardsquad-discord-bot)
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/tardsquad-discord-bot)](#)
-[![Travis Build Status](https://img.shields.io/travis/com/erikw/tardsquad-discord-bot/master?logo=travis)](https://app.travis-ci.com/github/erikw/tardsquad-discord-bot)
-[![SLOC](https://img.shields.io/tokei/lines/github/erikw/tardsquad-discord-bot)](#)
-[![License](https://img.shields.io/pypi/l/tardsquad-discord-bot)](https://github.com/erikw/tardsquad-discord-bot/blob/master/LICENSE)
-[![OSS Lifecycle](https://img.shields.io/osslifecycle/erikw/tardsquad-discord-bot)](https://github.com/Netflix/osstracker)
+[![Travis Build Status](https://img.shields.io/travis/com/tardsquad/tardsquad-discord-bot/master?logo=travis)](https://app.travis-ci.com/github/tardsquad/tardsquad-discord-bot)
+[![SLOC](https://img.shields.io/tokei/lines/github/tardsquad/tardsquad-discord-bot)](#)
+[![License](https://img.shields.io/pypi/l/tardsquad-discord-bot)](https://github.com/tardsquad/tardsquad-discord-bot/blob/master/LICENSE)
+[![OSS Lifecycle](https://img.shields.io/osslifecycle/tardsquad/tardsquad-discord-bot)](https://github.com/Netflix/osstracker)
 
 
 # Resouces
@@ -14,7 +14,7 @@
 
 # Setup
 ## Installation
-Make sure to use a supported python version. See the key `python` in the section `tool.poetry.dependencies` at [pyproject.toml](https://github.com/erikw/tardsquad-discord-bot/blob/master/pyproject.toml).
+Make sure to use a supported python version. See the key `python` in the section `tool.poetry.dependencies` at [pyproject.toml](https://github.com/tardsquad/tardsquad-discord-bot/blob/master/pyproject.toml).
 
 ```console
 $ pip install tardsquad-discord-bot
@@ -41,7 +41,7 @@ It's recommended to put these 2 values in the below described `tardsquad-discord
 ## Setup from Git
 * Clone this git
 ```console
-$ git clone https://github.com/erikw/tardsquad-discord-bot.git
+$ git clone https://github.com/tardsquad/tardsquad-discord-bot.git
 $ cd tardsquad-discord-bot
 ```
 * Install Poetry
