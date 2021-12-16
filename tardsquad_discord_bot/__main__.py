@@ -2,6 +2,7 @@
 # $ python -m taiga_stats
 
 import codecs
+import logging
 import os
 import sys
 
@@ -15,7 +16,7 @@ class MyClient(discord.Client):
         super().__init__(*args, **kwargs)
 
     async def on_ready(self):
-        print(f"Logged on as {self.user} at {self.guild}")  # TODO logging instead
+        logging.info(f"Logged on as {self.user} at {self.guild}")
 
     async def on_message(self, message):
         if message.author == self.user:
@@ -29,6 +30,13 @@ class MyClient(discord.Client):
 
 
 def main():
+    # Our log level (root).
+    logging.basicConfig(level=logging.INFO)
+
+    # Log level for discord.py package.
+    logger = logging.getLogger("discord")
+    logger.setLevel(logging.WARNING)
+
     load_dotenv()
     TOKEN = os.getenv("DISCORD_TOKEN")
     GUILD = os.getenv("GUILD")
