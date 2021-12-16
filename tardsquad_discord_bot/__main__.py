@@ -8,10 +8,6 @@ import sys
 import discord
 from dotenv import load_dotenv
 
-# @discord.client.event
-# async def on_ready():
-# print(f"{client.user} has connected to Discord!")
-
 
 class MyClient(discord.Client):
     def __init__(self, guild, *args, **kwargs):
@@ -19,7 +15,7 @@ class MyClient(discord.Client):
         super().__init__(*args, **kwargs)
 
     async def on_ready(self):
-        print(f"Logged on as {self.user} at {self.guild}")
+        print(f"Logged on as {self.user} at {self.guild}")  # TODO logging instead
 
     async def on_message(self, message):
         if message.author == self.user:
@@ -39,6 +35,7 @@ def main():
 
     client = MyClient(GUILD)
     client.run(TOKEN)
+    return 0
 
 
 if __name__ == "__main__":
