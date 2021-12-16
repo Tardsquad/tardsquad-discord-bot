@@ -4,6 +4,8 @@ from operator import itemgetter
 
 import discord
 
+import tardsquad_discord_bot
+
 
 class TardsquadClient(discord.Client):
     def __init__(self, guild, *args, **kwargs):
@@ -21,6 +23,7 @@ class TardsquadClient(discord.Client):
             commands = [
                 ("rot13", "Encode the string after the command with the rot-13 scheme."),
                 ("help", "Show this help message."),
+                ("version", "Print version of the bot"),
             ]
             commandstr = "\n".join(f"**!{cmd}** - {desc}" for cmd, desc in sorted(commands, key=itemgetter(0)))
             reply = "The commands that I support are:\n{:s}".format(commandstr)
@@ -30,4 +33,7 @@ class TardsquadClient(discord.Client):
             text = message.content[len("!rot13 ") :]
             textrot = codecs.encode(text, "rot_13")
             reply = "*rot13 of that is:*\n{:s}".format(textrot)
+            await message.channel.send(reply)
+        elif message.content.startswith("!version"):
+            reply = f"I'm at version `{tardsquad_discord_bot.__version__}`"
             await message.channel.send(reply)
