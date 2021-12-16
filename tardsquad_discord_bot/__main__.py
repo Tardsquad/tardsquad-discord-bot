@@ -4,24 +4,21 @@
 import os
 import sys
 
-from discord import Client, Embed, Intents
-from discord_slash import SlashCommand, SlashContext
+import discord
 from dotenv import load_dotenv
 
 
-@slash.slash(name="test")
-async def test(ctx: SlashContext):
-    embed = Embed(title="Embed Test")
-    await ctx.send(embed=embed)
+@client.event
+async def on_ready():
+    print(f"{client.user} has connected to Discord!")
 
 
 def main():
     load_dotenv()
     TOKEN = os.getenv("DISCORD_TOKEN")
 
-    bot = Client(intents=Intents.default())
-    slash = SlashCommand(bot)
-    bot.run(TOKEN)
+    client = discord.Client()
+    client.run(TOKEN)
 
 
 if __name__ == "__main__":

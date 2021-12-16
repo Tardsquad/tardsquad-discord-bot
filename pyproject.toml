@@ -14,9 +14,11 @@ include = ["CHANGELOG.md", "LICENSE", "README.md"]
 
 
 [tool.poetry.dependencies]
-discord-py-interactions = "^3.0"
+#discord-py-interactions = "^3.0"
+"discord.py" = "^1.7.3"
 python = "^3.7"
 python-dotenv = "^0.19"
+importlib-metadata = "^4.0"  # To support python 3.7. See __init__.py
 
 [tool.poetry.dev-dependencies]
 autoflake = "^1.4"
@@ -32,7 +34,7 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-run-bot = ':ardsquad_discord_bot.__main__:main'
+bot = 'tardsquad_discord_bot.__main__:main'
 
 [tool.isort]
 line_length = 160
