@@ -13,13 +13,12 @@ A Discord chat bot for the Tardsquad guild (Discord name for server).
 * Discord [Developer Portal](https://discordapp.com/developers/applications)
 * A general tutorial for a Discord bot can be found [here](https://realpython.com/how-to-make-a-discord-bot-python/)
 
-# Setup
-## Installation
+# Installation
 Make sure to use a supported python version. See the key `python` in the section `tool.poetry.dependencies` at [pyproject.toml](https://github.com/tardsquad/tardsquad-discord-bot/blob/master/pyproject.toml).
 
 ```console
 $ pip install tardsquad-discord-bot
-$ tardsquad-bot -h
+$ tardsquad-bot
 ```
 
 If you use [pipx](https://pypi.org/project/pipx/) to install, you must specify a supported and locally available python version like:
@@ -27,13 +26,6 @@ If you use [pipx](https://pypi.org/project/pipx/) to install, you must specify a
 ```console
 $ pipx install --python python3.9  tardsquad-discord-bot
 ```
-
-To use this tool, you need to supply
-* `--url` to your taiga server e.g. `https://api.taiga.io/`
-* `--auth-token` that you need to obtain according to the [official instructions](https://docs.taiga.io/api.html#_authentication).
-
-It's recommended to put these 2 values in the below described `tardsquad-discord-bot.conf` file for easier usage of this tool!
-
 
 # Development
 * Make sure to `$ poetry shell` before using tools like pyright LSP, so that it can find the installed dependency modules
@@ -46,29 +38,22 @@ $ git clone https://github.com/tardsquad/tardsquad-discord-bot.git
 $ cd tardsquad-discord-bot
 ```
 * Install Poetry
-* Numpy install issues as of 2021-10-31
-* `$ poetry install` did not work with Numpy on macOS. Solution from https://github.com/python-poetry/poetry/issues/3196#issuecomment-769753478
 ```console
-$ pyenv local 3.9.7
-$ poetry env use 3.9.7
-$ poetry config experimental.new-installer false
-$ poetry install
+$ pip install poetry
 ```
-
-* Install dependencies
+* Install project dependencies
 ```console
 $ poetry install
 ```
 * Now tardsquad-discord-bot should work!
 ```console
-$ poetry run tardsquad-discord-bot -h
-$ # or
-$ bin/tardsquad-discord-bot.sh
+$ poetry run tardsquad-bot
 ```
+
 * To install locally:
 ```console
 $ poetry build
-$ pip install dist/taiga_stats-*.whl
+$ pip install dist/tardsquad_discord_bot-*.whl
 ```
 
 
@@ -81,11 +66,4 @@ $ git commit -m "Prepare vX.Y.Z"
 $ git tag V.X.Y.Z
 $ git push --all && git push --tags
 $ poetry publish
-```
-
-or
-
-```console
-$ vi -p pyproject.toml CHANGELOG.md  # Update version.
-$ poetry publish --build
 ```
