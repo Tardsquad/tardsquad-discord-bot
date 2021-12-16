@@ -54,7 +54,7 @@ $ echo "GUILD=tardsquad" >> .env
 
 * Now tardsquad-discord-bot should work!
 ```console
-$ poetry run tardsquad-bot
+$ poetry run tardsquad-discord-bot
 ```
 
 * To install locally:
