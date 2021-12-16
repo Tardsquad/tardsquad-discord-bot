@@ -46,7 +46,7 @@ $ pip install poetry
 $ poetry install
 ```
 
-* Set up envionment. Fetch the bot token from the bot tab in the [tardsquad-discord-bot](https://discord.com/developers/applications/921085762190057532/bot) application in the Discord developer portal. Either set this as as an envionmental variable together with the guild (server name), or more preffered in a `.env` file in the project directory:
+* Set up envionment. Fetch the bot token from the bot tab in the [tardsquad-discord-bot](https://discord.com/developers/applications/921085762190057532/bot) application in the Discord developer portal. Either set this as as an envionmental variable together with the guild (server name), or more preffered in the git-ignored `.env` file in the project directory:
 ```console
 $ echo "DISCORD_TOKEN=the-token" > .env
 $ echo "GUILD=tardsquad" >> .env
