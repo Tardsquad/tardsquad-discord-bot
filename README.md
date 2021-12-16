@@ -8,7 +8,9 @@
 [![OSS Lifecycle](https://img.shields.io/osslifecycle/erikw/tardsquad-discord-bot)](https://github.com/Netflix/osstracker)
 
 
-A general tutorial for a Discord bot can be found [here](https://realpython.com/how-to-make-a-discord-bot-python/).
+# Resouces
+* Discord [Developer Portal](https://discordapp.com/developers/applications)
+* A general tutorial for a Discord bot can be found [here](https://realpython.com/how-to-make-a-discord-bot-python/)
 
 # Setup
 ## Installation
