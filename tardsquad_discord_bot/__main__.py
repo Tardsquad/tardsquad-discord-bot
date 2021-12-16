@@ -1,7 +1,6 @@
 # Entry point when called as a module
-# $ python -m taiga_stats
+# $ python -m tardsquad_discord_bot
 
-import codecs
 import logging
 import os
 import sys
@@ -9,24 +8,7 @@ import sys
 import discord
 from dotenv import load_dotenv
 
-
-class MyClient(discord.Client):
-    def __init__(self, guild, *args, **kwargs):
-        self.guild = guild
-        super().__init__(*args, **kwargs)
-
-    async def on_ready(self):
-        logging.info(f"Logged on as {self.user} at {self.guild}")
-
-    async def on_message(self, message):
-        if message.author == self.user:
-            return
-
-        if message.content.startswith("!rot13"):
-            text = message.content[len("!rot13") :]
-            textrot = codecs.encode(text, "rot_13")
-            reply = "*rot13 of that is:*\n{:s}".format(textrot)
-            await message.channel.send(reply)
+from tardsquad_discord_bot.client import TardsquadClient
 
 
 def setup_logging():
@@ -34,8 +16,8 @@ def setup_logging():
     logging.basicConfig(level=logging.INFO)
 
     # Log level for discord.py package.
-    logger = logging.getLogger("discord")
-    logger.setLevel(logging.WARNING)
+    disc_logger = logging.getLogger("discord")
+    disc_logger.setLevel(logging.WARNING)
 
 
 def read_conf():
@@ -49,7 +31,7 @@ def main():
     setup_logging()
     token, guild = read_conf()
 
-    client = MyClient(guild)
+    client = TardsquadClient(guild)
     client.run(token)
     return 0
 
