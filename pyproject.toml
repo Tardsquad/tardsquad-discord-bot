@@ -1,0 +1,50 @@
+[tool.poetry]
+name = "taiga-stats"
+version = "1.2.2"
+description = "Generate statistics from Taiga and produce burnup diagrams, CFDs, dependency graphs and more."
+authors = ["Erik Westrup <erik.westrup@gmail.com>"]
+license = "BSD-3-Clause"
+readme = "README.md"
+homepage = "https://github.com/erikw/taiga-stats"
+keywords = ["taiga", "generator", "stats", "cfd", "dependency graph"]
+classifiers = [
+    "Topic :: Utilities",
+    "Topic :: Software Development"
+]
+include = ["CHANGELOG.md", "LICENSE", "README.md"]
+
+
+[tool.poetry.dependencies]
+matplotlib = "^2.1.0"
+numpy = "^1.13.3"
+python = "^3.7, < 3.10.0"  # TODO remove restriction "<3.10.0" when numpy works. See README.md
+python-taiga = "^1.0.0"
+importlib-metadata = "^4.0"  # To support python 3.7. See __init__.py
+
+[tool.poetry.dev-dependencies]
+autoflake = "^1.4"
+autoimport = "^0.9"
+black = "^21.11b1"
+flake8 = "^4.0"	# TODO replace with flakehell to be able to move .flake8 to this config file. Blocked by https://github.com/flakehell/flakehell/issues/18
+ipdb = "^0.13"
+isort = "^5.9"
+pudb = "^2021.2.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+# By defining this, we can run
+# $ poetry run taiga-stats
+# instead of the longer
+# $ poetry run python -m taiga_stats
+# This short name will also be the name of the script being installed to the system when installing the wheel from pip.
+# NOTE python modules should use underscores, python packages not (PEP8)...
+taiga-stats = 'taiga_stats.__main__:main'
+
+[tool.isort]
+line_length = 160
+
+[tool.black]
+line_length = 160
