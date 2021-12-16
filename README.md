@@ -7,6 +7,7 @@
 [![License](https://img.shields.io/pypi/l/tardsquad-discord-bot)](https://github.com/tardsquad/tardsquad-discord-bot/blob/master/LICENSE)
 [![OSS Lifecycle](https://img.shields.io/osslifecycle/tardsquad/tardsquad-discord-bot)](https://github.com/Netflix/osstracker)
 
+A Discord chat bot for the Tardsquad guild (Discord name for server).
 
 # Resouces
 * Discord [Developer Portal](https://discordapp.com/developers/applications)
@@ -18,7 +19,7 @@ Make sure to use a supported python version. See the key `python` in the section
 
 ```console
 $ pip install tardsquad-discord-bot
-$ tardsquad-discord-bot -h
+$ tardsquad-bot -h
 ```
 
 If you use [pipx](https://pypi.org/project/pipx/) to install, you must specify a supported and locally available python version like:
