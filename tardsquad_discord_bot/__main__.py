@@ -29,7 +29,7 @@ class MyClient(discord.Client):
             await message.channel.send(reply)
 
 
-def main():
+def setup_logging():
     # Our log level (root).
     logging.basicConfig(level=logging.INFO)
 
@@ -37,12 +37,20 @@ def main():
     logger = logging.getLogger("discord")
     logger.setLevel(logging.WARNING)
 
-    load_dotenv()
-    TOKEN = os.getenv("DISCORD_TOKEN")
-    GUILD = os.getenv("GUILD")
 
-    client = MyClient(GUILD)
-    client.run(TOKEN)
+def read_conf():
+    load_dotenv()
+    token = os.getenv("DISCORD_TOKEN")
+    guild = os.getenv("GUILD")
+    return token, guild
+
+
+def main():
+    setup_logging()
+    token, guild = read_conf()
+
+    client = MyClient(guild)
+    client.run(token)
     return 0
 
 
