@@ -1,3 +1,4 @@
+import codecs
 import logging
 from operator import itemgetter
 
