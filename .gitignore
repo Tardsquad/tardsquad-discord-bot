@@ -1,0 +1,7 @@
+*.sw[op]
+/dist/
+/tardsquad_discord_bot/__py_cache__/*
+/tardsquad_discord_bot/__pycache__/*
+
+# Must be ignored - secret token stored here.
+.env
