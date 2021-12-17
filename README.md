@@ -30,7 +30,7 @@ $ pipx install --python python3.9 tardsquad-discord-bot
 # Development
 
 ## TL;DR the easy way
-* Get the discord token from [/settings/secrets/actions](https://github.com/tardsquad/tardsquad-discord-bot/settings/secrets/actions).
+* Get the discord token by asking @erikw.
 ```console
 $ git clone https://github.com/tardsquad/tardsquad-discord-bot.git
 $ cd tardsquad-discord-bot
