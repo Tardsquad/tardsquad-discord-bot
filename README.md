@@ -28,10 +28,23 @@ $ pipx install --python python3.9 tardsquad-discord-bot
 ```
 
 # Development
+
+## TL;DR the easy way
+* Get the discord token from [/settings/secrets/actions](https://github.com/tardsquad/tardsquad-discord-bot/settings/secrets/actions).
+```console
+$ git clone https://github.com/tardsquad/tardsquad-discord-bot.git
+$ cd tardsquad-discord-bot
+$ echo "DISCORD_TOKEN=the-token" > .env
+$ echo "GUILD=tardsquad" >> .env
+$ docker-compose up
+```
+
+Continue reading for how to setup local development envionment, with our without Docker below:
+
+## More elaborate
 * Make sure to `$ poetry shell` before using tools like pyright LSP, so that it can find the installed dependency modules
 * Reference for how to structure a python project: https://realpython.com/pypi-publish-python-package/
 
-## Setup from Git
 * Clone this git
 ```console
 $ git clone https://github.com/tardsquad/tardsquad-discord-bot.git
@@ -67,6 +80,8 @@ $ pip install dist/tardsquad_discord_bot-*.whl
 ```console
 $ docker build -t tardsquad-discord-bot .
 $ docker run --env-file=.env -t tardsquad-discord-bot
+$ # or more simply
+$ docker-compose up
 ```
 
 * Drop in to a shell like

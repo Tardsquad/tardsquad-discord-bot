@@ -7,8 +7,10 @@
 /.github/
 /.gitignore
 /.python-version
+/Dockerfile
 /OSSMETADATA
 /Session.vim
 /dist/
+/docker-compose.yml
 /tardsquad_discord_bot/__py_cache__/*
 /tardsquad_discord_bot/__pycache__/*

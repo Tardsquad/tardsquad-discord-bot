@@ -37,11 +37,7 @@ RUN apt-get update \
   && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /code
-
-# Copy only requirements to cache them in docker layer
-WORKDIR /code
-COPY . /code/
-
+COPY . .
 
 # Project initialization:
 RUN poetry install --no-dev --no-ansi
