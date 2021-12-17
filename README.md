@@ -63,15 +63,15 @@ $ poetry build
 $ pip install dist/tardsquad_discord_bot-*.whl
 ```
 
-* Build and run Docker image:
+* Build and run Docker image using the local `.env` file with secrets:
 ```console
 $ docker build -t tardsquad-discord-bot .
-$ docker run -t tardsquad-discord-bot
+$ docker run --env-file=.env -t tardsquad-discord-bot
 ```
 
 * Drop in to a shell like
 ```console
-$ docker run --rm -it --entrypoint bash tardsquad-discord-bot
+$ docker run --env-file=.env --rm -it --entrypoint bash tardsquad-discord-bot
 ```
 
 
