@@ -1,4 +1,5 @@
 # Tardsquad Discord Bot
+[![Push to GCR GitHub Action](https://github.com/Tardsquad/tardsquad-discord-bot/actions/workflows/push_to_gcr.yml/badge.svg)](https://github.com/Tardsquad/tardsquad-discord-bot/actions/workflows/push_to_gcr.yml)
 [![PyPI version](https://badge.fury.io/py/tardsquad-discord-bot.svg)](https://badge.fury.io/py/tardsquad-discord-bot)
 [![Downloads](https://pepy.tech/badge/tardsquad-discord-bot)](https://pepy.tech/project/tardsquad-discord-bot)
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/tardsquad-discord-bot)](#)
