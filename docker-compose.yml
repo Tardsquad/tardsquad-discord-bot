@@ -4,3 +4,5 @@ services:
  tardsquad-discord-bot:
    build: .
    env_file: .env
+   ports:
+       - ${PORT:-8080}:${PORT:-8080}  # Cloud Run requires us to listen to their specified $PORT
