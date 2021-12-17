@@ -35,7 +35,6 @@ $ pipx install --python python3.9 tardsquad-discord-bot
 $ git clone https://github.com/tardsquad/tardsquad-discord-bot.git
 $ cd tardsquad-discord-bot
 $ echo "DISCORD_TOKEN=the-token" > .env
-$ echo "GUILD=tardsquad" >> .env
 $ docker-compose up
 ```
 
@@ -62,7 +61,6 @@ $ poetry install
 * Set up envionment. Fetch the bot token from the bot tab in the [tardsquad-discord-bot](https://discord.com/developers/applications/921085762190057532/bot) application in the Discord developer portal. Either set this as as an envionmental variable together with the guild (server name), or more preffered in the git-ignored `.env` file in the project directory:
 ```console
 $ echo "DISCORD_TOKEN=the-token" > .env
-$ echo "GUILD=tardsquad" >> .env
 ```
 
 * Now tardsquad-discord-bot should work!

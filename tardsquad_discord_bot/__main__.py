@@ -23,7 +23,7 @@ def setup_logging():
 def read_conf():
     load_dotenv()
     token = os.getenv("DISCORD_TOKEN")
-    guild = os.getenv("GUILD")
+    guild = os.getenv("GUILD", "tardsquad")
     return token, guild
 
 
