@@ -13,7 +13,7 @@ class TardsquadClient(discord.Client):
         super().__init__(*args, **kwargs)
 
     async def on_ready(self):
-        logging.info(f"Logged on as {self.user} at server {self.guild}")
+        logging.info(f"Logged on as {self.user} at server {self.guild}.")
 
     async def on_message(self, message):
         if message.author == self.user or message.content[0] != "!":
