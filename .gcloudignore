@@ -1,0 +1,16 @@
+*.sw[op]
+.dockerignore
+.editorconfig
+.env
+.flake8
+.gcloudignore
+.git/
+.github/
+.gitignore
+.python-version
+Dockerfile
+OSSMETADATA
+Session.vim
+dist/
+tardsquad_discord_bot/__py_cache__/*
+tardsquad_discord_bot/__pycache__/*
