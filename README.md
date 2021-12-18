@@ -96,6 +96,13 @@ $ docker-compose up
 $ docker run --env-file=.env --rm -it --entrypoint bash tardsquad-discord-bot
 ```
 
+* To pull a Docker image stored in Google Cloud Registry:
+```console
+$ brew install google-cloud-sdk
+$ gcloud auth login
+$ docker pull gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest
+```
+
 
 ## Releasing
 ```console

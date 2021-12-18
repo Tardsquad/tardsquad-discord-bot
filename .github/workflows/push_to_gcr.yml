@@ -1,11 +1,12 @@
-name: Push to GCR GitHub Action
+name: Push Docker image to GCR & deploy to Cloud Run
 on:
   push:
     tags:
-      #- "v*"
+      #- "v*" TODO enable
       - "*"
 jobs:
   build-and-push-to-gcr:
+    # Reference: https://github.com/google-github-actions/deploy-cloudrun
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,3 +21,25 @@ jobs:
           project_id: tardsquad-discord-bot
           image_name: tardsquad-discord-bot
           image_tag: latest,${{ steps.get_tag_name.outputs.GIT_TAG_NAME }}
+  deploy-to-cloud-run:
+    # Reference: https://github.com/google-github-actions/deploy-cloudrun
+    needs: build-and-push-to-gcr
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v0'
+      with:
+        workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
+        service_account: 'my-service-account@my-project.iam.gserviceaccount.com'
+
+    - id: 'deploy'
+      uses: 'google-github-actions/deploy-cloudrun@v0'
+      with:
+        service: 'tardsquad-discord-bot'
+        image: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot'
+
+    - name: 'Use output'
+      run: 'curl "${{ steps.deploy.outputs.url }}"'
