@@ -37,10 +37,11 @@ RUN apt-get update \
   && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /code
-COPY . .
-
 # Project initialization:
+COPY poetry.lock pyproject.toml /code/
 RUN poetry install --no-dev --no-ansi
+
+COPY . .
 
 # We customize how our app is loaded with the custom entrypoint:
 ENTRYPOINT ["poetry", "run", "tardsquad-discord-bot"]
