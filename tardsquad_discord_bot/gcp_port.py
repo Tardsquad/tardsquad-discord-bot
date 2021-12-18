@@ -24,6 +24,7 @@ def start_gcp_port(port):
     Reference: https://emilwypych.com/2020/10/25/how-to-run-discord-bot-on-cloud-run/
     """
     logger = logging.getLogger("gcp_port")
-    logger.info(f"WIll start daemon on port #{port}")
+    logger.info("Spawning of a new thread for GCP port listener.")
+
     daemon = threading.Thread(name="daemon_server", target=start_server, args=(port,), daemon=True)
     daemon.start()

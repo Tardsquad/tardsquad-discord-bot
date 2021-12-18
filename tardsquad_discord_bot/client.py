@@ -34,13 +34,13 @@ class TardsquadClient(discord.Client):
 
     async def _intercept(self, message):
         if re.search(r"\bljunghusen|höllviken\b", message.content, re.I):
-            await message.channel.send("Are you sure it was on the right side of the Kanalen?")
+            await message.channel.send(f"{message.author.mention} Are you sure it was on the right side of the Kanalen?")
 
     async def on_ready(self):
         logging.info(f"Logged on as {self.user} at server {self.guild}.")
 
     async def on_message(self, message):
-        if message.author == self.user:
+        if message.author.bot:
             return
 
         if message.content[0] == "!":
