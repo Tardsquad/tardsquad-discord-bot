@@ -11,6 +11,9 @@
 A Discord chat bot for the Tardsquad guild (Discord name for server).
 
 # Resouces
+* Discord servers:
+  * [Staging](https://discord.gg/UkXYGmVEJp)
+  * [Production](https://discord.gg/WHg5X5CvfV)
 * Discord [Developer Portal](https://discordapp.com/developers/applications)
 * A general tutorial for a Discord bot can be found [here](https://realpython.com/how-to-make-a-discord-bot-python/)
 * GCP
