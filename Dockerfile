@@ -38,7 +38,7 @@ RUN apt-get update \
 
 WORKDIR /code
 # Project initialization:
-COPY poetry.lock pyproject.toml .
+COPY poetry.lock pyproject.toml ./
 RUN poetry install --no-dev --no-ansi
 
 COPY . .
