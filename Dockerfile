@@ -18,6 +18,8 @@ ENV \
 ENV \
   POETRY_VERSION=1.1.11 \
   POETRY_NO_INTERACTION=1 \
+  #POETRY_VIRTUALENVS_CREATE=false \
+  POETRY_VIRTUALENVS_IN_PROJECT=true \
   PATH="$PATH:/root/.local/bin"
 
 # System dependencies
