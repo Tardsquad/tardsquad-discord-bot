@@ -29,7 +29,7 @@ class TardsquadClient(discord.Client):
             reply = "*rot13 of that is:*\n{:s}".format(textrot)
             await message.channel.send(reply)
         elif message.content.startswith("!version"):
-            reply = f"I'm at version `{tardsquad_discord_bot.__version__}`"
+            reply = f"I'm at `v{tardsquad_discord_bot.__version__}`"
             await message.channel.send(reply)
 
     async def _intercept(self, message):
