@@ -23,6 +23,7 @@ jobs:
           image_tag: latest,${{ steps.get_tag_name.outputs.GIT_TAG_NAME }}
   deploy-to-cloud-run:
     # Reference: https://github.com/google-github-actions/deploy-cloudrun
+    runs-on: ubuntu-latest
     needs: build-and-push-to-gcr
     permissions:
       contents: 'read'
