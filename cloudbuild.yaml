@@ -13,7 +13,7 @@ steps:
     entrypoint: 'gcloud'
     timeout: 240s
     args: ['compute', 'instances',
-           'create-with-container', 'tardsquad-discord-bot-vim',
+           'create-with-container', 'tardsquad-discord-bot-vm',
            '--container-image',
            'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest']
    # TODO secretKeyRef
