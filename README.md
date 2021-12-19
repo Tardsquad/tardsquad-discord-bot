@@ -16,7 +16,7 @@ A Discord chat bot for the Tardsquad guild (Discord name for server).
   * [Staging](https://discord.gg/UkXYGmVEJp)
 * Discord [Developer Portal](https://discordapp.com/developers/applications)
   * [Application tardsquad-discord-bot-staging](https://discord.com/developers/applications/921085762190057532/information)
-  * [Application tardsquad-discord-bot-production](TODO)
+  * [Application tardsquad-discord-bot-production](https://discord.com/developers/applications/922195559618592799/information)
 * A general tutorial for a Discord bot can be found [here](https://realpython.com/how-to-make-a-discord-bot-python/)
 * GCP
   * [Cloud Run Service](https://console.cloud.google.com/run/detail/us-central1/tardsquad-discord-bot/metrics?project=tardsquad-discord-bot) that runs our container for image published to GCR.
@@ -113,4 +113,4 @@ $ docker pull gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest
 * Head over to the production discord and try a command like `!version` and it should work!
 
 # Known Issues
-* Even though the Cloud Run revision is configured to only have one container active at once, on a new deploymet the old one will live on for a while. This means that for some moment of time, multiple instances of the bot-client will be conntected and thus one will multiple replies on commands. Cloud Run is designed for web services, not chat bots :). 
+* Even though the Cloud Run revision is configured to only have one container active at once, on a new deploymet the old one will live on for a while. This means that for some moment of time, multiple instances of the bot-client will be conntected and thus one will multiple replies on commands. Cloud Run is designed for web services, not chat bots :).
