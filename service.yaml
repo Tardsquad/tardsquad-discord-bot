@@ -1,0 +1,72 @@
+apiVersion: serving.knative.dev/v1
+kind: Revision
+metadata:
+  name: tardsquad-discord-bot-00010-mug
+  namespace: '851718758933'
+  selfLink: /apis/serving.knative.dev/v1/namespaces/851718758933/revisions/tardsquad-discord-bot-00010-mug
+  uid: 39240981-8801-458f-aa82-1b58f00f6bd9
+  resourceVersion: AAXTdHw5GNk
+  generation: 1
+  creationTimestamp: '2021-12-18T23:57:06.820081Z'
+  labels:
+    serving.knative.dev/route: tardsquad-discord-bot
+    serving.knative.dev/configuration: tardsquad-discord-bot
+    serving.knative.dev/configurationGeneration: '10'
+    serving.knative.dev/service: tardsquad-discord-bot
+    serving.knative.dev/serviceUid: bc86c85a-18f2-4245-8be5-7591c32c2a1b
+    cloud.googleapis.com/location: us-central1
+  annotations:
+    run.googleapis.com/client-name: cloud-console
+    serving.knative.dev/creator: erik.westrup@gmail.com
+    autoscaling.knative.dev/minScale: '1'
+    run.googleapis.com/execution-environment: gen1
+    autoscaling.knative.dev/maxScale: '1'
+    run.googleapis.com/cpu-throttling: 'false'
+  ownerReferences:
+  - kind: Configuration
+    name: tardsquad-discord-bot
+    uid: 45574e89-a818-4082-9475-85721b10bcfc
+    apiVersion: serving.knative.dev/v1
+    controller: true
+    blockOwnerDeletion: true
+spec:
+  containerConcurrency: 1
+  timeoutSeconds: 300
+  serviceAccountName: 851718758933-compute@developer.gserviceaccount.com
+  containers:
+  - image: gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest
+    ports:
+    - name: http1
+      containerPort: 8080
+    env:
+    - name: DISCORD_TOKEN
+      valueFrom:
+        secretKeyRef:
+          key: latest
+          name: DISCORD_TOKEN
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 512Mi
+status:
+  observedGeneration: 1
+  conditions:
+  - type: Ready
+    status: 'True'
+    lastTransitionTime: '2021-12-18T23:57:17.977249Z'
+  - type: Active
+    status: 'True'
+    lastTransitionTime: '2021-12-18T23:57:23.428483Z'
+    severity: Info
+  - type: ContainerHealthy
+    status: 'True'
+    lastTransitionTime: '2021-12-18T23:57:17.206155Z'
+  - type: MinInstancesProvisioned
+    status: 'True'
+    lastTransitionTime: '2021-12-18T23:57:17.977249Z'
+    severity: Info
+  - type: ResourcesAvailable
+    status: 'True'
+    lastTransitionTime: '2021-12-18T23:57:13.225641Z'
+  logUrl: https://console.cloud.google.com/logs/viewer?project=tardsquad-discord-bot&resource=cloud_run_revision/service_name/tardsquad-discord-bot/revision_name/tardsquad-discord-bot-00010-mug&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22tardsquad-discord-bot%22%0Aresource.labels.revision_name%3D%22tardsquad-discord-bot-00010-mug%22
+  imageDigest: gcr.io/tardsquad-discord-bot/tardsquad-discord-bot@sha256:508d836232f189b7a08ab39f138d8e72ab3c5a15e7d0cefacf19ffa5cbf9c09d

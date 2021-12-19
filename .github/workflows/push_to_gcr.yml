@@ -39,9 +39,11 @@ on:
     - id: 'deploy'
       uses: 'google-github-actions/deploy-cloudrun@v0'
       with:
-        service: 'tardsquad-discord-bot'
+        #service: 'tardsquad-discord-bot'
         image: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest'
+        metadata: ./service.yaml
         region: 'us-central1'
+
 
     - name: 'Use output'
       run: 'curl "${{ steps.deploy.outputs.url }}"'
