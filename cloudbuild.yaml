@@ -1,0 +1,35 @@
+steps:
+- name: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot'
+  args: ['set', 'image', 'deployment/mydepl', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest']
+  #env:
+  #- 'CLOUDSDK_COMPUTE_ZONE=us-east4-b'
+  #- 'CLOUDSDK_CONTAINER_CLUSTER=my-cluster'
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot', '.']
+
+
+
+steps:
+  # Docker Build
+  - id: tardsquad-discord-bot
+    name: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot'
+    args: ['build', '-t', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot', '.']
+
+  # Docker Push
+  - id: tardsquad-discord-push
+    name: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot'
+    args: ['push',
+           'us-central1-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/myimage']
+
+  # Entrypoint, timeout and environment variables
+  - id: tardsquad-discord-deploy
+    name: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot'
+    entrypoint: 'gcloud'
+    timeout: 240s
+    args: ['compute', 'instances',
+           'create-with-container', 'tardsquad-discord-bot-vim',
+           '--container-image',
+           'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest']
+    env:
+      - 'CLOUDSDK_COMPUTE_REGION=us-central1'
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
