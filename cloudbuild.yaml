@@ -1,15 +1,4 @@
 steps:
-- name: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot'
-  args: ['set', 'image', 'deployment/mydepl', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest']
-  #env:
-  #- 'CLOUDSDK_COMPUTE_ZONE=us-east4-b'
-  #- 'CLOUDSDK_CONTAINER_CLUSTER=my-cluster'
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot', '.']
-
-
-
-steps:
   # Docker Build
   - id: tardsquad-discord-bot
     name: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot'
