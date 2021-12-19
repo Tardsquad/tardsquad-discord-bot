@@ -1,22 +1,39 @@
+#steps:
+#  - id: tardsquad-discord-bot-build
+#    name: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot'
+#    args: ['build', '-t', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot', '.']
+#
+#  - id: tardsquad-discord-push
+#    name: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot'
+#    args: ['push',
+#           'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest']
+#
+#  - id: tardsquad-discord-deploy
+#    name: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot'
+#    entrypoint: 'gcloud'
+#    timeout: 240s
+#    args: ['compute', 'instances',
+#           'create-with-container', 'tardsquad-discord-bot-vm',
+#           '--container-image',
+#           'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest']
+#   # TODO secretKeyRef.
+#    env:
+#      - 'CLOUDSDK_COMPUTE_REGION=us-central1'
+#      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+
+
+
+
 steps:
-  - id: tardsquad-discord-bot-build
-    name: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot'
-    args: ['build', '-t', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot', '.']
-
-  - id: tardsquad-discord-push
-    name: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot'
-    args: ['push',
-           'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest']
-
-  - id: tardsquad-discord-deploy
-    name: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot'
-    entrypoint: 'gcloud'
-    timeout: 240s
-    args: ['compute', 'instances',
-           'create-with-container', 'tardsquad-discord-bot-vm',
-           '--container-image',
-           'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest']
-   # TODO secretKeyRef.
-    env:
-      - 'CLOUDSDK_COMPUTE_REGION=us-central1'
-      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot', '.']
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot']
+# Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'SERVICE-NAME', '--image', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot', '--region', 'REGION']
+images:
+- gcr.io/tardsquad-discord-bot/tardsquad-discord-bot
