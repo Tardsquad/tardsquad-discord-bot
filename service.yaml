@@ -18,21 +18,12 @@ metadata:
     autoscaling.knative.dev/maxScale: '1'
     run.googleapis.com/cpu-throttling: 'false'
 spec:
-  containerConcurrency: 1
-  timeoutSeconds: 300
   serviceAccountName: 851718758933-compute@developer.gserviceaccount.com
   containers:
   - image: gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest
-    ports:
-    - name: http1
-      containerPort: 8080
     env:
     - name: DISCORD_TOKEN
       valueFrom:
         secretKeyRef:
           key: latest
           name: DISCORD_TOKEN
-    resources:
-      limits:
-        cpu: 1000m
-        memory: 512Mi
