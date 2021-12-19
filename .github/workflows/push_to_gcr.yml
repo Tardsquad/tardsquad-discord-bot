@@ -4,7 +4,7 @@ on:
     tags:
       #- "v*" TODO enable
       - "*"
-#jobs:
+jobs:
 #  build-and-push-to-gcr:
 #    # Reference: https://github.com/google-github-actions/deploy-cloudrun
 #    runs-on: ubuntu-latest
