@@ -1,16 +1,13 @@
 steps:
-  # Docker Build
-  - id: tardsquad-discord-bot
+  - id: tardsquad-discord-bot-build
     name: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot'
     args: ['build', '-t', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot', '.']
 
-  # Docker Push
   - id: tardsquad-discord-push
     name: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot'
     args: ['push',
-           'us-central1-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/myimage']
+           'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest']
 
-  # Entrypoint, timeout and environment variables
   - id: tardsquad-discord-deploy
     name: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot'
     entrypoint: 'gcloud'
@@ -19,6 +16,7 @@ steps:
            'create-with-container', 'tardsquad-discord-bot-vim',
            '--container-image',
            'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest']
+   # TODO secretKeyRef
     env:
       - 'CLOUDSDK_COMPUTE_REGION=us-central1'
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
