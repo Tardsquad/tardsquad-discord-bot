@@ -18,11 +18,12 @@ ENV \
 ENV \
   POETRY_VERSION=1.1.11 \
   POETRY_NO_INTERACTION=1 \
+  POETRY_VIRTUALENVS_CREATE=false \
   # Required as Google Cloud Run runs docker commands in a separate context,
   # meaning that $(poetry run) won't find the existing virtualenv
   # and the execution fails with module import errors.
   # Reference: https://stackoverflow.com/q/68683913/265508
-  POETRY_VIRTUALENVS_IN_PROJECT=true \
+  #POETRY_VIRTUALENVS_IN_PROJECT=true \
   PATH="$PATH:/root/.local/bin"
 
 # System dependencies
