@@ -40,7 +40,7 @@ jobs:
       with:
         #service: 'tardsquad-discord-bot'
         image: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest'
-        metadata: ./service.yaml
+        metadata: '${{ env.GITHUB_WORKSPACE }}/service.yaml'
 
 
     - name: 'Use output'
