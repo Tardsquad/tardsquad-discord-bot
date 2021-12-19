@@ -4,27 +4,27 @@ on:
     tags:
       #- "v*" TODO enable
       - "*"
-jobs:
-  build-and-push-to-gcr:
-    # Reference: https://github.com/google-github-actions/deploy-cloudrun
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Get the tag name
-        id: get_tag_name
-        run: echo ::set-output name=GIT_TAG_NAME::${GITHUB_REF/refs\/tags\//}
-      - uses: google-github-actions/setup-gcloud@master
-      - uses: RafikFarhad/push-to-gcr-github-action@v4
-        with:
-          gcloud_service_key: ${{ secrets.GCLOUD_SERVICE_KEY }}
-          registry: gcr.io
-          project_id: tardsquad-discord-bot
-          image_name: tardsquad-discord-bot
-          image_tag: latest,${{ steps.get_tag_name.outputs.GIT_TAG_NAME }}
+#jobs:
+#  build-and-push-to-gcr:
+#    # Reference: https://github.com/google-github-actions/deploy-cloudrun
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Get the tag name
+#        id: get_tag_name
+#        run: echo ::set-output name=GIT_TAG_NAME::${GITHUB_REF/refs\/tags\//}
+#      - uses: google-github-actions/setup-gcloud@master
+#      - uses: RafikFarhad/push-to-gcr-github-action@v4
+#        with:
+#          gcloud_service_key: ${{ secrets.GCLOUD_SERVICE_KEY }}
+#          registry: gcr.io
+#          project_id: tardsquad-discord-bot
+#          image_name: tardsquad-discord-bot
+#          image_tag: latest,${{ steps.get_tag_name.outputs.GIT_TAG_NAME }}
   deploy-to-cloud-run:
     # Reference: https://github.com/google-github-actions/deploy-cloudrun
     runs-on: ubuntu-latest
-    needs: build-and-push-to-gcr
+    #needs: build-and-push-to-gcr
     permissions:
       contents: 'read'
       id-token: 'write'
@@ -40,7 +40,8 @@ jobs:
       uses: 'google-github-actions/deploy-cloudrun@v0'
       with:
         service: 'tardsquad-discord-bot'
-        image: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot'
+        image: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest'
+        region: 'us-central1'
 
     - name: 'Use output'
       run: 'curl "${{ steps.deploy.outputs.url }}"'
