@@ -33,8 +33,7 @@ on:
     - id: 'auth'
       uses: 'google-github-actions/auth@v0'
       with:
-        workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
-        service_account: 'my-service-account@my-project.iam.gserviceaccount.com'
+        credentials_json: '${{ secrets.GCP_SA_KEY }}'
 
     - id: 'deploy'
       uses: 'google-github-actions/deploy-cloudrun@v0'
@@ -42,7 +41,6 @@ on:
         #service: 'tardsquad-discord-bot'
         image: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest'
         metadata: ./service.yaml
-        region: 'us-central1'
 
 
     - name: 'Use output'
