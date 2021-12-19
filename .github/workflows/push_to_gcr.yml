@@ -30,7 +30,7 @@ jobs:
       id-token: 'write'
 
     steps:
-    - id: 'checkout'
+    - id: 'checkout' # TODO remove as clone is i above job, or extract this to a job that both other depends on.
       uses: actions/checkout@v2
     - id: 'auth'
       uses: 'google-github-actions/auth@v0'
