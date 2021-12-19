@@ -2,8 +2,7 @@ name: Push Docker image to GCR & deploy to Cloud Run
 on:
   push:
     tags:
-      #- "v*" TODO enable
-      - "*"
+      - "v*"
 jobs:
   build-and-push-to-gcr:
     # Reference: https://github.com/google-github-actions/deploy-cloudrun
@@ -40,10 +39,7 @@ jobs:
     - id: 'deploy'
       uses: 'google-github-actions/deploy-cloudrun@v0'
       with:
-        #service: 'tardsquad-discord-bot'
-        #image: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest'
-        metadata: service.yaml
-        #metadata: '${{ env.GITHUB_WORKSPACE }}/service.yaml'
+        metadata: .google-cloud/service.yaml
 
 
     - name: 'Use output'
