@@ -114,3 +114,6 @@ $ git tag V.X.Y.Z
 $ git push --all && git push --tags
 $ poetry publish
 ```
+
+# Known issues
+* Even though the Cloud Run revision is configured to only have one container active at once, on a new deploymet the old one will live on for a while. This means that for some moment of time, multiple instances of the bot-client will be conntected and thus one will multiple replies on commands.
