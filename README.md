@@ -1,6 +1,5 @@
 # Tardsquad Discord Bot
 [![OSS Lifecycle](https://img.shields.io/osslifecycle/tardsquad/tardsquad-discord-bot)](https://github.com/Netflix/osstracker)
-[![Supported Python versions](https://img.shields.io/pypi/pyversions/tardsquad-discord-bot)](#)
 [![SLOC](https://img.shields.io/tokei/lines/github/tardsquad/tardsquad-discord-bot)](#)
 [![License](https://img.shields.io/pypi/l/tardsquad-discord-bot)](https://github.com/tardsquad/tardsquad-discord-bot/blob/master/LICENSE)
 
