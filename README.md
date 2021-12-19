@@ -2,13 +2,16 @@
 [![OSS Lifecycle](https://img.shields.io/osslifecycle/tardsquad/tardsquad-discord-bot)](https://github.com/Netflix/osstracker)
 [![SLOC](https://img.shields.io/tokei/lines/github/tardsquad/tardsquad-discord-bot)](#)
 [![License](https://img.shields.io/pypi/l/tardsquad-discord-bot)](https://github.com/tardsquad/tardsquad-discord-bot/blob/master/LICENSE)
+[![Discord Production](https://img.shields.io/discord/296746259358679040?color=success&label=production&logo=discord)](https://discord.gg/WHg5X5CvfV)
+[![Discord Staging](https://img.shields.io/discord/921089193466277918?color=success&label=production&logo=discord)](https://discord.gg/UkXYGmVEJp)
+
 
 A Discord chat bot for the Tardsquad guild (Discord name for server).
 
 # Resouces
 * Discord servers:
-  * [Staging](https://discord.gg/UkXYGmVEJp)
   * [Production](https://discord.gg/WHg5X5CvfV)
+  * [Staging](https://discord.gg/UkXYGmVEJp)
 * Discord [Developer Portal](https://discordapp.com/developers/applications)
 * A general tutorial for a Discord bot can be found [here](https://realpython.com/how-to-make-a-discord-bot-python/)
 * GCP
