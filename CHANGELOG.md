@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+## [0.2.0] - 2021-12-19
+- Split to staging and prod envionment.
+
 ## [0.1.0] - 2021-12-19
 - Initial working release with a few starter bot commands
 - Continious build and deployment with Google Cloud Run
