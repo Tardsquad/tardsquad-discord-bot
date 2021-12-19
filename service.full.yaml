@@ -1,7 +1,7 @@
 apiVersion: serving.knative.dev/v1
-kind: Service
+kind: Revision
 metadata:
-  name: xyz-service
+  name: tardsquad-discord-bot
   namespace: '851718758933'
   labels:
     serving.knative.dev/route: tardsquad-discord-bot
@@ -17,6 +17,13 @@ metadata:
     run.googleapis.com/execution-environment: gen1
     autoscaling.knative.dev/maxScale: '1'
     run.googleapis.com/cpu-throttling: 'false'
+  ownerReferences:
+  - kind: Configuration
+    name: tardsquad-discord-bot
+    uid: 45574e89-a818-4082-9475-85721b10bcfc
+    apiVersion: serving.knative.dev/v1
+    controller: true
+    blockOwnerDeletion: true
 spec:
   containerConcurrency: 1
   timeoutSeconds: 300
