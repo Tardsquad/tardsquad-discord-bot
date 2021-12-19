@@ -7,6 +7,8 @@ import discord
 
 import tardsquad_discord_bot
 
+REPO_URL = "https://github.com/Tardsquad/tardsquad-discord-bot"
+
 
 class TardsquadClient(discord.Client):
     def __init__(self, guild, *args, **kwargs):
@@ -21,7 +23,7 @@ class TardsquadClient(discord.Client):
                 ("version", "Print version of the bot"),
             ]
             commandstr = "\n".join(f"**!{cmd}** - {desc}" for cmd, desc in sorted(commands, key=itemgetter(0)))
-            reply = "The commands that I support are:\n{:s}".format(commandstr)
+            reply = "The commands that I support are:\n{:s}\n\nPlease extend me with more commands by contributing to\n<{:s}>".format(commandstr, REPO_URL)
             await message.channel.send(reply)
         elif message.content.startswith("!rot13 "):
             text = message.content[len("!rot13 ") :]
@@ -30,6 +32,8 @@ class TardsquadClient(discord.Client):
             await message.channel.send(reply)
         elif message.content.startswith("!version"):
             reply = f"I'm at `v{tardsquad_discord_bot.__version__}`."
+            # TODO maybe check if this is the latest available version and warn if we're no on that?
+            # https://github.com/Tardsquad/tardsquad-discord-bot/tags
             await message.channel.send(reply)
 
     async def _intercept(self, message):
