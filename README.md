@@ -23,23 +23,12 @@ A Discord chat bot for the Tardsquad guild (Discord name for server).
   * [Service Account](https://console.cloud.google.com/iam-admin/serviceaccounts/details/100468477191441270091?project=tardsquad-discord-bot&supportedpurview=project) used to publish Docker images to GCR.
   * [Secret Manager](https://console.cloud.google.com/security/secret-manager/secret/) is where `DISCORD_TOKEN` is stored, which is hooked up as envvar in the Cloud Run service.
 
-# Installation
-Make sure to use a supported python version. See the key `python` in the section `tool.poetry.dependencies` at [pyproject.toml](https://github.com/tardsquad/tardsquad-discord-bot/blob/master/pyproject.toml).
 
-```console
-$ pip install tardsquad-discord-bot
-$ tardsquad-bot
-```
-
-If you use [pipx](https://pypi.org/project/pipx/) to install, you must specify a supported and locally available python version like:
-
-```console
-$ pipx install --python python3.9 tardsquad-discord-bot
-```
 
 # Development
+Make sure to use a supported python version. See the key `python` in the section `tool.poetry.dependencies` at [pyproject.toml](https://github.com/tardsquad/tardsquad-discord-bot/blob/master/pyproject.toml). It's recommended to install e.g. `pyenv` to manage python versions.
 
-## TL;DR the easy way
+## TL;DR The Easy Way
 * Get the discord token by asking [@erikw](https://github.com/erikw) or from the bot tab in the [tardsquad-discord-bot](https://discord.com/developers/applications/921085762190057532/bot) application in the Discord developer portal
 ```console
 $ git clone https://github.com/tardsquad/tardsquad-discord-bot.git && cd $(basename "$_" .git)
@@ -49,7 +38,7 @@ $ docker-compose up
 
 Continue reading for how to setup local development envionment, with our without Docker below:
 
-## More elaborate
+## More Elaborate
 * Make sure to `$ poetry shell` before using tools like pyright LSP, so that it can find the installed dependency modules
 * Reference for how to structure a python project: https://realpython.com/pypi-publish-python-package/
 
@@ -115,5 +104,5 @@ $ git push --all && git push --tags
 $ poetry publish
 ```
 
-# Known issues
+# Known Issues
 * Even though the Cloud Run revision is configured to only have one container active at once, on a new deploymet the old one will live on for a while. This means that for some moment of time, multiple instances of the bot-client will be conntected and thus one will multiple replies on commands.
