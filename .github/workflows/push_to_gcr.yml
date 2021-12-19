@@ -39,8 +39,9 @@ jobs:
       uses: 'google-github-actions/deploy-cloudrun@v0'
       with:
         #service: 'tardsquad-discord-bot'
-        image: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest'
-        metadata: '${{ env.GITHUB_WORKSPACE }}/service.yaml'
+        #image: 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest'
+        metadata: ./service.yaml
+        #metadata: '${{ env.GITHUB_WORKSPACE }}/service.yaml'
 
 
     - name: 'Use output'
