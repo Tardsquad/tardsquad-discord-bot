@@ -26,14 +26,17 @@
 
 steps:
 # Build the container image
-- name: 'gcr.io/cloud-builders/docker'
+- id: tardsquad-discord-bot-build
+  name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot', '.']
 # Push the container image to Container Registry
-- name: 'gcr.io/cloud-builders/docker'
+- id: tardsquad-discord-bot-push
+  name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot']
 # Deploy container image to Cloud Run
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+- id: tardsquad-discord-bot-deploy
+  name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['run', 'deploy', 'SERVICE-NAME', '--image', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot', '--region', 'REGION']
+  args: ['run', 'deploy', 'tardsquad-discord-bot', '--image', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot', '--region', 'us-central1']
 images:
 - gcr.io/tardsquad-discord-bot/tardsquad-discord-bot
