@@ -112,4 +112,4 @@ $ docker pull gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest
 * Head over to the production discord and try a command like `!version` and it should work!
 
 # Known Issues
-* Even though the Cloud Run revision is configured to only have one container active at once, on a new deploymet the old one will live on for a while. This means that for some moment of time, multiple instances of the bot-client will be conntected and thus one will multiple replies on commands.
+* Even though the Cloud Run revision is configured to only have one container active at once, on a new deploymet the old one will live on for a while. This means that for some moment of time, multiple instances of the bot-client will be conntected and thus one will multiple replies on commands. Cloud Run is designed for web services, not chat bots :). 
