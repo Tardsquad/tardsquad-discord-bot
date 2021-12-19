@@ -14,6 +14,8 @@ A Discord chat bot for the Tardsquad guild (Discord name for server).
   * [Production](https://discord.gg/WHg5X5CvfV)
   * [Staging](https://discord.gg/UkXYGmVEJp)
 * Discord [Developer Portal](https://discordapp.com/developers/applications)
+  * [Application tardsquad-discord-bot-staging](https://discord.com/developers/applications/921085762190057532/information)
+  * [Application tardsquad-discord-bot-production](TODO)
 * A general tutorial for a Discord bot can be found [here](https://realpython.com/how-to-make-a-discord-bot-python/)
 * GCP
   * [Cloud Run Service](https://console.cloud.google.com/run/detail/us-central1/tardsquad-discord-bot/metrics?project=tardsquad-discord-bot) that runs our container for image published to GCR.
@@ -56,7 +58,7 @@ $ pip install poetry
 $ poetry install
 ```
 
-* Set up envionment. Fetch the bot token from the bot tab in the [tardsquad-discord-bot](https://discord.com/developers/applications/921085762190057532/bot) application in the Discord developer portal. Either set this as as an envionmental variable together with the guild (server name), or more preffered in the git-ignored `.env` file in the project directory:
+* Set up envionment. We must make sure to only use the staging envionment so that our local runs don't endup in production the server. Fetch the bot token from the bot tab in the [tardsquad-discord-bot-staging](https://discord.com/developers/applications/921085762190057532/bot) application in the Discord developer portal. Either set this as as an envionmental variable together with the guild (server name), or more preffered in the git-ignored `.env` file in the project directory:
 ```console
 $ echo "DISCORD_TOKEN=the-token" > .env
 ```
@@ -93,16 +95,21 @@ $ docker pull gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest
 ```
 
 
-## Releasing
-```console
-$ vi -p pyproject.toml CHANGELOG.md  # Update version.
-$ poetry build
-$ ls -l dist/
-$ git commit -m "Prepare vX.Y.Z"
-$ git tag V.X.Y.Z
-$ git push --all && git push --tags
-$ poetry publish
-```
+# Release & Deploy
+* First verify that the bot works
+  ```console
+  $ poetry run tardsquad-discord-bot
+  $ docker-compose up
+  ```
+* Now update version and create corresponding git tag
+  ```console
+  $ vi -p pyproject.toml CHANGELOG.md  # Update version.
+  $ git commit -m "Prepare vX.Y.Z"
+  $ git tag V.X.Y.Z
+  $ git push --all && git push --tags
+  ```
+* A newly pushed tag with the pattern `v.*` will trigger a [Cloud Build Triggers](https://console.cloud.google.com/cloud-build/triggers?referrer=search&project=tardsquad-discord-bot). This build trigger will execute [.google-cloud/cloudbuild.yaml](.google-cloud/cloudbuild.yaml). The last step will spin up a container for the new image at for the [Cloud Run Service](https://console.cloud.google.com/run/detail/us-central1/tardsquad-discord-bot/metrics?project=tardsquad-discord-bot) that runs our container for image published to GCR.
+* Head over to the production discord and try a command like `!version` and it should work!
 
 # Known Issues
 * Even though the Cloud Run revision is configured to only have one container active at once, on a new deploymet the old one will live on for a while. This means that for some moment of time, multiple instances of the bot-client will be conntected and thus one will multiple replies on commands.
