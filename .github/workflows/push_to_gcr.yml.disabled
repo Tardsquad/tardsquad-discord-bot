@@ -5,7 +5,7 @@ on:
       - "v*"
 jobs:
   build-and-push-to-gcr:
-    # Reference: https://github.com/google-github-actions/deploy-cloudrun
+    # Reference: https://github.com/RafikFarhad/push-to-gcr-github-action
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
