@@ -2,6 +2,7 @@
 [![Discord Production](https://img.shields.io/discord/296746259358679040?color=success&label=production&logo=discord)](https://discord.gg/WHg5X5CvfV)
 [![Discord Staging](https://img.shields.io/discord/921089193466277918?color=success&label=staging&logo=discord)](https://discord.gg/UkXYGmVEJp)
 <br>
+[![Latest SemVer Tag](https://img.shields.io/github/v/tag/tardsquad/tardsquad-discord-bot?sort=semver&label=Latest%20Release&logo=linuxcontainers)](https://github.com/Tardsquad/tardsquad-discord-bot/tags)
 [![OSS Lifecycle](https://img.shields.io/osslifecycle/tardsquad/tardsquad-discord-bot)](https://github.com/Netflix/osstracker)
 [![SLOC](https://img.shields.io/tokei/lines/github/tardsquad/tardsquad-discord-bot)](#)
 [![License](https://img.shields.io/github/license/tardsquad/tardsquad-discord-bot)](https://github.com/tardsquad/tardsquad-discord-bot/blob/master/LICENSE)
