@@ -1,4 +1,5 @@
 # Backup from UI: https://console.cloud.google.com/run/detail/us-central1/tardsquad-discord-bot/revisions?project=tardsquad-discord-bot
+# Used by .github/workflows/push_to_gcr.yml for deploying a new revision of the Cloud Run service.
 apiVersion: serving.knative.dev/v1
 kind: Revision
 metadata:
