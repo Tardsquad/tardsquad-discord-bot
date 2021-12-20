@@ -1,7 +1,11 @@
 import codecs
+import functools
 import logging
+import re
 import urllib
 
+import requests
+import semver
 from discord.ext import commands
 
 import tardsquad_discord_bot
@@ -31,9 +35,24 @@ class TardBotCommands(commands.Cog):
 
     @commands.command(help="Print my bot version.")
     async def version(self, ctx):
+        url = "https://api.github.com/repos/Tardsquad/tardsquad-discord-bot/tags"
+        resp = requests.get(url=url)
+        latest_ver = None
+        if resp.status_code == 200:
+            versions = []
+            for tag in resp.json():
+                if re.match(r"^v\d+\.", tag["name"]):
+                    try:
+                        versions.append(tag["name"][1:])
+                    except ValueError:
+                        pass
+                if versions:
+                    versions.sort(key=functools.cmp_to_key(semver.compare))
+                    latest_ver = versions[-1]
+
         reply = f"I'm at `v{tardsquad_discord_bot.__version__}`."
-        # TODO maybe check if this is the latest available version and warn if we're no on that?
-        # https://github.com/Tardsquad/tardsquad-discord-bot/tags
+        if latest_ver and latest_ver != semver.VersionInfo.parse(tardsquad_discord_bot.__version__):
+            reply += "\nHowever the latest version is `v{:s}`".format(str(latest_ver))
         await ctx.send(reply)
 
     @commands.command(help="Encode the string after the command with the rot-13 scheme.")
