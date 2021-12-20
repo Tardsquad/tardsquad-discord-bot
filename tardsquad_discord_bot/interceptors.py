@@ -8,9 +8,8 @@ from tardsquad_discord_bot.textcolor import TextColor
 
 
 class TardBotInterceptors(commands.Cog, metaclass=InterceptorMetaclass):
-    def __init__(self, bot, guild, *args, **kwargs):
+    def __init__(self, bot, *args, **kwargs):
         self.bot = bot
-        self.guild = guild
 
     @commands.Cog.listener()
     async def on_message(self, message):

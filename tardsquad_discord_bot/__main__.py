@@ -42,7 +42,7 @@ def main():
 
     bot = TardsquadClient()
     bot.add_cog(TardBotCommands(bot, guild))
-    bot.add_cog(TardBotInterceptors(bot, guild))
+    bot.add_cog(TardBotInterceptors(bot))
     bot.run(token)
     return 0
 
