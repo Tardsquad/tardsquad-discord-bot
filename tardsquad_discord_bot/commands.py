@@ -14,6 +14,7 @@ from tardsquad_discord_bot.textcolor import TextColor
 REPO_URL = "https://github.com/Tardsquad/tardsquad-discord-bot"
 
 
+# TODO add a "!weather <location>" command?
 class TardBotCommands(commands.Cog):
     def __init__(self, bot, guild, *args, **kwargs):
         self.bot = bot
