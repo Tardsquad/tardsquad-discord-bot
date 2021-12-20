@@ -9,6 +9,7 @@ import discord
 from dotenv import load_dotenv
 
 from tardsquad_discord_bot.client import TardsquadClient
+from tardsquad_discord_bot.commands import TardBotCommands
 from tardsquad_discord_bot.gcp_port import start_gcp_port
 
 
@@ -38,8 +39,9 @@ def main():
     token, guild, port = read_conf()
     start_gcp_port(port)
 
-    client = TardsquadClient(guild)
-    client.run(token)
+    bot = TardsquadClient(guild)
+    bot.add_cog(TardBotCommands(bot, guild))
+    bot.run(token)
     return 0
 
 
