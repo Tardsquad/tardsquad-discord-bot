@@ -52,7 +52,7 @@ class TardBotCommands(commands.Cog):
         reply = "**Please extend me** with more commands by contributing to\n<{:s}>".format(REPO_URL)
         await ctx.send(reply)
 
-    @commands.command(name="google", aliases=["g"], help="Search on Google for given query string.")
+    @commands.command(name="google", aliases=["g", "lmgtfy"], help="Search on Google for given query string.")
     async def search_google(self, ctx, *args):
         url_fmt = "https://www.google.com/search?hl=en&q={:s}"
         await ctx.send(TardBotCommands.search_query(url_fmt, *args))
