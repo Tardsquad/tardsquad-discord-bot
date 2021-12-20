@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 from tardsquad_discord_bot.client import TardsquadClient
 from tardsquad_discord_bot.commands import TardBotCommands
 from tardsquad_discord_bot.gcp_port import start_gcp_port
+from tardsquad_discord_bot.interceptors import TardBotInterceptors
 
 
 def setup_logging():
@@ -41,6 +42,7 @@ def main():
 
     bot = TardsquadClient()
     bot.add_cog(TardBotCommands(bot, guild))
+    bot.add_cog(TardBotInterceptors(bot, guild))
     bot.run(token)
     return 0
 
