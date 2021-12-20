@@ -30,6 +30,6 @@ class TardsquadClient(commands.Bot, metaclass=InterceptorMetaclass):
 
     @message_interceptor()
     async def intercept_nummer(self, message):
-        if "nummer" in message.content.lower():
+        if re.search(r"(?<!person)nummer\b", message.content, re.I):
             reply = f"{message.author.mention} med nummer menar du personnummer?"
             await message.channel.send(reply)
