@@ -2,9 +2,7 @@ import re
 
 from discord.ext import commands
 
-import tardsquad_discord_bot
 from tardsquad_discord_bot.interceptor_helpers import InterceptorMetaclass, message_interceptor
-from tardsquad_discord_bot.textcolor import TextColor
 
 
 class TardBotInterceptors(commands.Cog, metaclass=InterceptorMetaclass):
