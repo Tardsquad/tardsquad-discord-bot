@@ -11,13 +11,16 @@
 A Discord chat bot for the Tardsquad guild (Discord name for server).
 
 # Resouces
+* A general tutorial for a Discord bot can be found [here](https://realpython.com/how-to-make-a-discord-bot-python/)
+* [discord.py](https://github.com/Rapptz/discord.py) Python library to work with Discord
+  * [API Reference](https://discordpy.readthedocs.io/en/latest/api.html#discord.Intents)
+  * [Commands Refernce](https://discordpy.readthedocs.io/en/stable/ext/commands/commands.html) from the extension module.
 * Discord servers:
   * [Production](https://discord.gg/WHg5X5CvfV)
   * [Staging](https://discord.gg/UkXYGmVEJp)
 * Discord [Developer Portal](https://discordapp.com/developers/applications)
   * [Application tardsquad-discord-bot-staging](https://discord.com/developers/applications/921085762190057532/information)
   * [Application tardsquad-discord-bot-production](https://discord.com/developers/applications/922195559618592799/information)
-* A general tutorial for a Discord bot can be found [here](https://realpython.com/how-to-make-a-discord-bot-python/)
 * GCP
   * [Cloud Run Service](https://console.cloud.google.com/run/detail/us-central1/tardsquad-discord-bot/metrics?project=tardsquad-discord-bot) that runs our container for image published to GCR.
   * [Cloud Build Triggers](https://console.cloud.google.com/cloud-build/triggers?referrer=search&project=tardsquad-discord-bot) Sets up build/push/deploy on git version tag push by pointing to [.google-cloud/cloudbuild.yaml](.google-cloud/cloudbuild.yaml).
