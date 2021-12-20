@@ -8,8 +8,7 @@ from tardsquad_discord_bot.message_interceptor import InterceptorMetaclass, mess
 
 
 class TardsquadClient(commands.Bot, metaclass=InterceptorMetaclass):
-    def __init__(self, guild, *args, **kwargs):
-        self.guild = guild
+    def __init__(self, *args, **kwargs):
         super().__init__(command_prefix="!", *args, **kwargs)
 
     async def on_message(self, message):

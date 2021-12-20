@@ -39,7 +39,7 @@ def main():
     token, guild, port = read_conf()
     start_gcp_port(port)
 
-    bot = TardsquadClient(guild)
+    bot = TardsquadClient()
     bot.add_cog(TardBotCommands(bot, guild))
     bot.run(token)
     return 0
