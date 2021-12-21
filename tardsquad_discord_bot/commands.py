@@ -45,8 +45,7 @@ class TardBotCommands(commands.Cog):
                 if re.match(r"^v\d+\.", tag["name"]):
                     versions.append(tag["name"][1:])
             if versions:
-                versions.sort(key=functools.cmp_to_key(semver.compare))
-                latest_ver = versions[-1]
+                latest_ver = max(versions, key=functools.cmp_to_key(semver.compare))
 
         reply = f"I'm at `v{tardsquad_discord_bot.__version__}`."
         if latest_ver and latest_ver != semver.VersionInfo.parse(tardsquad_discord_bot.__version__):
