@@ -49,7 +49,7 @@ class TardBotCommands(commands.Cog):
 
         reply = f"I'm at `v{tardsquad_discord_bot.__version__}`."
         if latest_ver and latest_ver != semver.VersionInfo.parse(tardsquad_discord_bot.__version__):
-            reply += "\nHowever the latest version is `v{:s}`".format(str(latest_ver))
+            reply += "\nHowever the latest version pushed to GitHub is `v{:s}`".format(str(latest_ver))
         await ctx.send(reply)
 
     @commands.command(help="Encode the string after the command with the rot-13 scheme.")
