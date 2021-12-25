@@ -28,3 +28,9 @@ class TardBotInterceptors(commands.Cog, metaclass=InterceptorMetaclass):
         if re.search(r"(?<!person)nummer\b", message.content, re.I):
             reply = f"{message.author.mention} med nummer menar du personnummer?"
             await message.channel.send(reply)
+
+    @message_interceptor()
+    async def intercept_system(self, message):
+        if re.search(r"(?<!eko)system\b", message.content, re.I):
+            reply = f"{message.author.mention} typ som ett ekosystem?"
+            await message.channel.send(reply)
