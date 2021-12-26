@@ -30,7 +30,7 @@ class TardBotCommands(commands.Cog):
 
     @commands.Cog.listener()
     async def on_disconnect(self):
-        logging.info("Disconnecting from server {self.guild}.")
+        logging.info(f"Disconnecting from server {self.guild}.")
 
     @commands.command(help="Print my bot version.")
     async def version(self, ctx):
