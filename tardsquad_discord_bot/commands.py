@@ -11,8 +11,6 @@ from discord.ext import commands
 import tardsquad_discord_bot
 from tardsquad_discord_bot.textcolor import TextColor
 
-REPO_URL = "https://github.com/Tardsquad/tardsquad-discord-bot"
-
 
 # TODO add a "!weather <location>" command?
 class TardBotCommands(commands.Cog):
@@ -65,7 +63,8 @@ class TardBotCommands(commands.Cog):
 
     @commands.command(help="Get the link to my source code.")
     async def source(self, ctx):
-        reply = "**Please extend me** with more commands by contributing to\n<{:s}>".format(REPO_URL)
+        repo_url = "https://github.com/Tardsquad/tardsquad-discord-bot"
+        reply = "**Please extend me** with more commands by contributing to\n<{:s}>".format(repo_url)
         await ctx.send(reply)
 
     @commands.command(name="google", aliases=["g", "lmgtfy"], help="Search on Google for given query string.")
