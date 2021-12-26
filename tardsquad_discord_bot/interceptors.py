@@ -34,3 +34,15 @@ class TardBotInterceptors(commands.Cog, metaclass=InterceptorMetaclass):
         if re.search(r"(?<!eko)system\b", message.content, re.I):
             reply = f"{message.author.mention} typ som ett ekosystem?"
             await message.channel.send(reply)
+
+    @message_interceptor()
+    async def intercept_alles_gut(self, message):
+        if re.search(r"\balles\s+gut\b", message.content, re.I):
+            reply = f"{message.author.mention} gut alles!"
+            await message.channel.send(reply)
+
+    @message_interceptor()
+    async def intercept_gut_alles(self, message):
+        if re.search(r"\bgut\s+alles\b", message.content, re.I):
+            reply = f"{message.author.mention} alles gut!"
+            await message.channel.send(reply)
