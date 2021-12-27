@@ -46,17 +46,18 @@ class TardBotGeneralCommands(commands.Cog, name="General"):
 
     @commands.command(help="Rate how good you feel in a scale [1-10] 10 being best. Your rating is valid for 24h.")
     async def rate(self, ctx, rating: int):
-        reply = None
+        reply = ""
         if rating < 1 or rating > 10:
             reply = TextColor.red("You can only be in states [1, 10].")
-        elif rating == 10 and "fredrik" not in ctx.message.author.name.lower():
-            reply = TextColor.red("Sorry; a rating of 10 is reserved for Fredrik.")
         else:
+            if rating == 10 and "fredrik" not in ctx.message.author.name.lower():
+                rating = 9
+                reply = TextColor.red("Sorry; a rating of 10 is reserved for Fredrik. I've downgraded you to a 9.")
             rating_entry = RatingEntry(ctx.message.author, rating)
             self.ratings[ctx.message.author.id] = rating_entry
             # For testing with single user.
             # self.ratings[str(ctx.message.author.id) + str(datetime.now())] = rating_entry
-            reply = f":star: Thank you {ctx.message.author.name} for sharing your current rating!\n\n"
+            reply += f":star: Thank you {ctx.message.author.name} for sharing your current rating!\n\n"
             reply += self._rating_status()
         await ctx.send(reply)
 
