@@ -26,7 +26,7 @@ class TardBotSearchCommands(commands.Cog, name="Search"):
 
     @commands.command(name="duck", aliases=["d"], help="Search on DuckDuckGo for given query string.")
     async def search_duckduckgo(self, ctx, *args):
-        url_fmt = "https://duckduckgo.com/?t=ffab&q={:s}"
+        url_fmt = "https://duckduckgo.com/?q={:s}"
         await ctx.send(TardBotSearchCommands.search_query(url_fmt, *args))
 
     @commands.command(name="youtube", aliases=["y", "yt"], help="Search on YouTube for given query string.")
