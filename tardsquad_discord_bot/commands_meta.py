@@ -48,7 +48,7 @@ class TardBotMetaCommands(commands.Cog, name="BotMeta"):
         reply = "**Please extend me** with more commands by contributing to:\n<{:s}>".format(repo_url)
         await ctx.send(reply)
 
-    @commands.command(help="Get the link to Application deployment status.")
+    @commands.command(help="Get the link to my application deployment status.")
     async def deployment(self, ctx):
         revision_url = "https://console.cloud.google.com/run/detail/us-central1/tardsquad-discord-bot/revisions?project=tardsquad-discord-bot"
         reply = "The latest & ongoing deployments can be found at:\n<{:s}>".format(revision_url)
