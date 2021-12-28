@@ -7,10 +7,10 @@ import semver
 from discord.ext import commands
 
 import tardsquad_discord_bot
+from tardsquad_discord_bot.cog import TardBotCog
 
 
-# TODO add a "!weather <location>" command?
-class TardBotMetaCommands(commands.Cog, name="BotMeta"):
+class TardBotMetaCommands(TardBotCog, name="BotMeta"):
     def __init__(self, bot, guild, *args, **kwargs):
         self.bot = bot
         self.guild = guild

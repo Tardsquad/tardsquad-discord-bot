@@ -1,7 +1,9 @@
 from discord.ext.commands.cog import CogMeta
 
+from tardsquad_discord_bot.cog import CogABCMeta
 
-class InterceptorMetaclass(CogMeta):
+
+class InterceptorMetaclass(CogABCMeta):
     """Collects @message_interceptor annotated method to a list for later usage in the class.
 
     Must derive from `CogMeta` instead of the usual `type`, to keep the normal Cog behaviour.

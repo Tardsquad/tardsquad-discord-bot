@@ -2,13 +2,11 @@ import re
 
 from discord.ext import commands
 
+from tardsquad_discord_bot.cog import TardBotCog
 from tardsquad_discord_bot.interceptor_helpers import InterceptorMetaclass, message_interceptor
 
 
-class TardBotInterceptors(commands.Cog, metaclass=InterceptorMetaclass):
-    def __init__(self, bot, *args, **kwargs):
-        self.bot = bot
-
+class TardBotInterceptors(TardBotCog, metaclass=InterceptorMetaclass):
     @commands.Cog.listener()
     async def on_message(self, message):
         if message.author.bot:

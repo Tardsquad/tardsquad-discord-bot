@@ -48,7 +48,7 @@ def main():
     bot.add_cog(TardBotRatingCommands(bot, guild))
     bot.add_cog(TardBotSearchCommands(bot, guild))
     bot.add_cog(TardBotMetaCommands(bot, guild))
-    bot.add_cog(TardBotInterceptors(bot))
+    bot.add_cog(TardBotInterceptors(bot, guild))
     bot.run(token)
     return 0
 

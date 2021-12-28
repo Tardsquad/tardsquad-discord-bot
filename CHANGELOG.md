@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Downgrade `!rate 10` to `9` if not entitled.
 - Rename `!rate-all` to `!rate-standup`.
 - Move Rating commands to own Cog.
+- Create base class for Cog to remove boilerplate.
 
 ## [0.8.0] - 2021-12-27
 ### Added

@@ -3,15 +3,12 @@ import codecs
 from discord.ext import commands
 
 import tardsquad_discord_bot
+from tardsquad_discord_bot.cog import TardBotCog
 from tardsquad_discord_bot.textcolor import TextColor
 
 
 # TODO add a "!weather <location>" command?
-class TardBotGeneralCommands(commands.Cog, name="General"):
-    def __init__(self, bot, guild, *args, **kwargs):
-        self.bot = bot
-        self.guild = guild
-
+class TardBotGeneralCommands(TardBotCog, name="General"):
     @commands.command(help="Encode the string after the command with the rot-13 scheme.")
     async def rot13(self, ctx, *args):
         reply = None
