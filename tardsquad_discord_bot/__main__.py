@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 from tardsquad_discord_bot.client import TardsquadClient
 from tardsquad_discord_bot.commands_general import TardBotGeneralCommands
 from tardsquad_discord_bot.commands_meta import TardBotMetaCommands
+from tardsquad_discord_bot.commands_rating import TardBotRatingCommands
 from tardsquad_discord_bot.commands_search import TardBotSearchCommands
 from tardsquad_discord_bot.gcp_port import start_gcp_port
 from tardsquad_discord_bot.interceptors import TardBotInterceptors
@@ -44,6 +45,7 @@ def main():
 
     bot = TardsquadClient()
     bot.add_cog(TardBotGeneralCommands(bot, guild))
+    bot.add_cog(TardBotRatingCommands(bot, guild))
     bot.add_cog(TardBotSearchCommands(bot, guild))
     bot.add_cog(TardBotMetaCommands(bot, guild))
     bot.add_cog(TardBotInterceptors(bot))

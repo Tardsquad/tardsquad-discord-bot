@@ -7,7 +7,6 @@ import semver
 from discord.ext import commands
 
 import tardsquad_discord_bot
-from tardsquad_discord_bot.textcolor import TextColor
 
 
 # TODO add a "!weather <location>" command?
