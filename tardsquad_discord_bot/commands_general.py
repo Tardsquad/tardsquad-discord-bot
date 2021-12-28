@@ -65,7 +65,7 @@ class TardBotGeneralCommands(commands.Cog, name="General"):
     async def rate_status(self, ctx):
         await ctx.send(self._rating_status())
 
-    @commands.command(name="rate-all", help="Prompt everyone that it's time to !rate")
-    async def rate_all(self, ctx):
+    @commands.command(name="rate-standup", help="Prompt everyone that it's time to !rate")
+    async def rate_standup(self, ctx):
         reply = "@everyone it's time to `!rate` now!"
         await ctx.send(reply)

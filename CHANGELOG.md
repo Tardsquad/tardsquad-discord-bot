@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - Downgrade `!rate 10` to `9` if not entitled.
+- Rename `!rate-all` to `!rate-standup`
 
 ## [0.8.0] - 2021-12-27
 ### Added
