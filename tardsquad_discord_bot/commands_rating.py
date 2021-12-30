@@ -1,3 +1,4 @@
+import shelve
 from operator import attrgetter
 
 from discord.ext import commands
@@ -11,10 +12,17 @@ from tardsquad_discord_bot.textcolor import TextColor
 class TardBotRatingCommands(TardBotCog, name="Rating"):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.ratings = {}
+        self.ratings = shelve.open("./ratings.shelve", flag="c", writeback=True)
+
+    @commands.Cog.listener()
+    async def on_disconnect(self):
+        # We don't modify the RatingEntry outside of the shelve operations, so this should not be needed. But just in case...
+        self.ratings.sync()
 
     def _rating_gc(self):
-        self.ratings = {aid: rating for aid, rating in self.ratings.items() if not rating.expired()}
+        for author_id in list(self.ratings):
+            if self.ratings[author_id].expired():
+                del self.ratings[author_id]
 
     def _rating_status(self):
         self._rating_gc()
@@ -23,7 +31,7 @@ class TardBotRatingCommands(TardBotCog, name="Rating"):
         summary = []
         for entry in reversed(sorted(self.ratings.values(), key=attrgetter("rating"))):
             reason = f": {entry.reason}" if entry.reason else ""
-            summary.append(f"* {entry.rating} @{entry.user.name} [expires in {entry.expires_at()}]{reason}")
+            summary.append(f"* {entry.rating} @{entry.username} [expires in {entry.expires_at()}]{reason}")
         summary_all = "\n".join(summary)
         return f"Current rating status:\n```{summary_all}```"
 
@@ -38,8 +46,8 @@ class TardBotRatingCommands(TardBotCog, name="Rating"):
             if rating == 10 and "fredrik" not in ctx.message.author.name.lower():
                 rating = 9
                 reply = TextColor.red("Sorry; a rating of 10 is reserved for Fredrik. I've downgraded you to a 9.")
-            rating_entry = RatingEntry(ctx.message.author, rating, reason)
-            self.ratings[ctx.message.author.id] = rating_entry
+            rating_entry = RatingEntry(ctx.message.author.name, rating, reason)
+            self.ratings[str(ctx.message.author.id)] = rating_entry
             # For testing with single user.
             # self.ratings[str(ctx.message.author.id) + str(__import__("datetime").datetime.now())] = rating_entry
             reply += f":star: Thank you {ctx.message.author.name} for sharing your current rating!\n\n"

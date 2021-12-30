@@ -13,5 +13,6 @@
 /Session.vim
 /dist/
 /docker-compose.yml
+/ratings.shelve
 /tardsquad_discord_bot/__py_cache__/*
 /tardsquad_discord_bot/__pycache__/*

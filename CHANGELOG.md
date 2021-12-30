@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - `!rate` expires after 6h instead of 24h.
+- `!rate` stored state in a shelve file, to persist though program restarts.
 
 ## [0.9.0] - 2021-12-28
 ### Changed
