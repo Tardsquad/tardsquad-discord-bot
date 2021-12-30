@@ -4,9 +4,10 @@ RATING_EXPIRES_AFTER_H = 6
 
 
 class RatingEntry:
-    def __init__(self, user, rating):
+    def __init__(self, user, rating, reason=None):
         self.user = user
         self.rating = rating
+        self.reason = reason
         self.expiry_time = datetime.now() + timedelta(hours=RATING_EXPIRES_AFTER_H)
         # For testing:
         # self.expiry_time = datetime.now() + timedelta(minutes=2)

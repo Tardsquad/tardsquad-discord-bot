@@ -23,6 +23,12 @@ class TardBotMetaCommands(TardBotCog, name="BotMeta"):
     async def on_disconnect(self):
         logging.info(f"Disconnecting from server {self.guild}.")
 
+    @commands.Cog.listener()
+    async def on_command_error(self, ctx, error):
+        if isinstance(error, commands.MissingRequiredArgument):
+            reply = f"{ctx.message.author.mention} Required parameters for the command are missing. Please check `!help {ctx.command}`"
+            await ctx.send(reply)
+
     @commands.command(help="Print my bot version.")
     async def version(self, ctx):
         url = "https://api.github.com/repos/Tardsquad/tardsquad-discord-bot/tags"
