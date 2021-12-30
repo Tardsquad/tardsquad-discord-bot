@@ -1,11 +1,13 @@
 from datetime import datetime, timedelta
 
+RATING_EXPIRES_AFTER_H = 6
+
 
 class RatingEntry:
     def __init__(self, user, rating):
         self.user = user
         self.rating = rating
-        self.expiry_time = datetime.now() + timedelta(hours=24)
+        self.expiry_time = datetime.now() + timedelta(hours=RATING_EXPIRES_AFTER_H)
         # For testing:
         # self.expiry_time = datetime.now() + timedelta(minutes=2)
 
