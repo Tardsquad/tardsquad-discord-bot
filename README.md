@@ -22,7 +22,7 @@ A Discord chat bot for the Tardsquad guild (Discord name for server).
   * [Application tardsquad-discord-bot-staging](https://discord.com/developers/applications/921085762190057532/information)
   * [Application tardsquad-discord-bot-production](https://discord.com/developers/applications/922195559618592799/information)
 * GCP
-  * [Cloud Run Service](https://console.cloud.google.com/run/detail/us-central1/tardsquad-discord-bot/metrics?project=tardsquad-discord-bot) that runs our container for image published to GCR.
+  * [Cloud Run Service](https://console.cloud.google.com/run/detail/us-central1/tardsquad-discord-bot/metrics?project=tardsquad-discord-bot) Application that runs our container for image published to GCR.
   * [Cloud Build Triggers](https://console.cloud.google.com/cloud-build/triggers?referrer=search&project=tardsquad-discord-bot) Sets up build/push/deploy on git version tag push by pointing to [.google-cloud/cloudbuild.yaml](.google-cloud/cloudbuild.yaml).
   * [Container Registry](https://console.cloud.google.com/gcr/images/tardsquad-discord-bot?project=tardsquad-discord-bot)
     * [Storage Bucket](https://console.cloud.google.com/storage/browser?project=tardsquad-discord-bot&prefix=) for the above containers
