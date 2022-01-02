@@ -22,12 +22,12 @@ def setup_logging():
     logging.basicConfig(level=logging.INFO)
 
     # Log level for discord.py package.
-    disc_logger = logging.getLogger("discord")
-    disc_logger.setLevel(logging.WARNING)
+    disco_logger = logging.getLogger("discord")
+    disco_logger.setLevel(logging.WARNING)
 
     # Log level for dummy GCP server thread.
-    disc_logger = logging.getLogger("gcp_port")
-    disc_logger.setLevel(logging.INFO)
+    gcp_logger = logging.getLogger("gcp_port")
+    gcp_logger.setLevel(logging.INFO)
 
 
 def read_conf():
