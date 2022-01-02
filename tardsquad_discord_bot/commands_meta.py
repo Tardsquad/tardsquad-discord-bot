@@ -11,10 +11,6 @@ from tardsquad_discord_bot.cog import TardBotCog
 
 
 class TardBotMetaCommands(TardBotCog, name="BotMeta"):
-    def __init__(self, bot, guild, *args, **kwargs):
-        self.bot = bot
-        self.guild = guild
-
     @commands.Cog.listener()
     async def on_ready(self):
         logging.info(f"Logged on as {self.bot.user} at server {self.guild}.")
