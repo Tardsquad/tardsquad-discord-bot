@@ -6,9 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.12.0] - 2022-01-03
+### Added
+- Set bot activity status on startup.
+
 ## [0.11.0] - 2022-01-02
 ### Modified
-- Various smaller fixes. 
+- Various smaller fixes.
 
 ## [0.10.0] - 2021-12-30
 ### Added
