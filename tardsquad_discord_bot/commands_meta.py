@@ -15,7 +15,7 @@ class TardBotMetaCommands(TardBotCog, name="BotMeta"):
     @commands.Cog.listener()
     async def on_ready(self):
         logging.info(f"Logged on as {self.bot.user} at server {self.guild}.")
-        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="! commands. Try !help"))
+        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="!-commands. Try !help"))
 
     @commands.Cog.listener()
     async def on_disconnect(self):
