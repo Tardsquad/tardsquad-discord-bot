@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2022-01-31
+- The bot is now proven stable
+
 ## [0.12.1] - 2022-01-05
 ### Fixed
 - Activity status format.
