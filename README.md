@@ -107,7 +107,7 @@ $ docker pull gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest
   ```
 * Now update version and create corresponding git tag
   ```console
-  $ vi CHANGELOG.md git commit -am "Update CHANGELOG"
+  $ vi CHANGELOG.md && git commit -am "Update CHANGELOG"
   $ poetry version minor  # major|minor|patch
   $ git tag v$(poetry version -s)
   $ git push --all && git push --tags
