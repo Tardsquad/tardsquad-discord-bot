@@ -109,7 +109,7 @@ $ docker pull gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest
   ```console
   $ vi CHANGELOG.md
   $ poetry version minor && ver="v$(poetry version -s)"
-  $ git commit -am "Bump version to $ver" &&  git tag $ver && git push --atomic origin main $ver
+  $ git commit -am "Bump version to $ver" && git tag $ver && git push --atomic origin main $ver
   ```
 * A newly pushed tag with the pattern `v.*` will trigger a [Cloud Build Triggers](https://console.cloud.google.com/cloud-build/triggers?referrer=search&project=tardsquad-discord-bot). This build trigger will execute [.google-cloud/cloudbuild.yaml](.google-cloud/cloudbuild.yaml). The last step will spin up a container for the new image at for the [Cloud Run Service](https://console.cloud.google.com/run/detail/us-central1/tardsquad-discord-bot/metrics?project=tardsquad-discord-bot) that runs our container for image published to GCR.
 * Head over to the production discord and try a command like `!version` and it should work!
