@@ -23,7 +23,7 @@ semver = "^2.13.0"
 
 [tool.poetry.dev-dependencies]
 autoflake = "^1.4"
-autoimport = "^0.11"
+autoimport = "^1.0"
 black = "^21.11b1"
 flake8 = "^4.0"
 ipdb = "^0.13"
