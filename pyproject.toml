@@ -38,7 +38,7 @@ build-backend = "poetry.core.masonry.api"
 tardsquad-discord-bot = 'tardsquad_discord_bot.__main__:main'
 
 [tool.isort]
-line_length = 160
+line_length = 120
 
 [tool.black]
-line_length = 160
+line_length = 120

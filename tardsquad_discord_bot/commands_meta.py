@@ -15,7 +15,9 @@ class TardBotMetaCommands(TardBotCog, name="BotMeta"):
     @commands.Cog.listener()
     async def on_ready(self):
         logging.info(f"Logged on as {self.bot.user} at server {self.guild}.")
-        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="!-commands. Try !help"))
+        await self.bot.change_presence(
+            activity=discord.Activity(type=discord.ActivityType.watching, name="!-commands. Try !help")
+        )
 
     @commands.Cog.listener()
     async def on_disconnect(self):
@@ -24,7 +26,10 @@ class TardBotMetaCommands(TardBotCog, name="BotMeta"):
     @commands.Cog.listener()
     async def on_command_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            reply = f"{ctx.message.author.mention} Required parameters for the command are missing. Please check `!help {ctx.command}`"
+            reply = (
+                f"{ctx.message.author.mention} Required parameters for the command are missing. "
+                f"Please check `!help {ctx.command}`"
+            )
             await ctx.send(reply)
 
     @commands.command(help="Print my bot version.")

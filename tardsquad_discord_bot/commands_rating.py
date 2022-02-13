@@ -15,7 +15,8 @@ class TardBotRatingCommands(TardBotCog, name="Rating"):
 
     @commands.Cog.listener()
     async def on_disconnect(self):
-        # We don't modify the RatingEntry outside of the shelve operations, so this should not be needed. But just in case...
+        # We don't modify the RatingEntry outside of the shelve operations,
+        # so this should not be needed. But just in case...
         self.ratings.sync()
 
     def _rating_gc(self):
