@@ -2,7 +2,6 @@ import codecs
 
 from discord.ext import commands
 
-import tardsquad_discord_bot
 from tardsquad_discord_bot.cog import TardBotCog
 from tardsquad_discord_bot.textcolor import TextColor
 

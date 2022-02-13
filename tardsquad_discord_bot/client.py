@@ -1,7 +1,4 @@
-import discord
 from discord.ext import commands
-
-import tardsquad_discord_bot
 
 
 class TardsquadClient(commands.Bot):

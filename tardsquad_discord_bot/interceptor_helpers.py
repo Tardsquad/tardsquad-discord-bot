@@ -1,5 +1,3 @@
-from discord.ext.commands.cog import CogMeta
-
 from tardsquad_discord_bot.cog import CogABCMeta
 
 

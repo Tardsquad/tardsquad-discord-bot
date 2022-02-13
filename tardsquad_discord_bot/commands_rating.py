@@ -3,7 +3,6 @@ from operator import attrgetter
 
 from discord.ext import commands
 
-import tardsquad_discord_bot
 from tardsquad_discord_bot.cog import TardBotCog
 from tardsquad_discord_bot.ratingentry import RATING_EXPIRES_AFTER_H, RatingEntry
 from tardsquad_discord_bot.textcolor import TextColor
@@ -36,7 +35,10 @@ class TardBotRatingCommands(TardBotCog, name="Rating"):
         return f"Current rating status:\n```{summary_all}```"
 
     @commands.command(
-        help=f"Rate how good you feel on a scale [1-10], with 10 being best.\nYour rating is valid for {RATING_EXPIRES_AFTER_H}h.\nAn optional reason can also be given (must be a double-quoted string!)."
+        help=f"""Rate how good you feel on a scale [1-10], with 10 being best.
+                 Your rating is valid for {RATING_EXPIRES_AFTER_H}h.
+                 An optional reason can also be given (must be a double-quoted string!).
+                 """
     )
     async def rate(self, ctx, rating: int, reason=None):
         reply = ""

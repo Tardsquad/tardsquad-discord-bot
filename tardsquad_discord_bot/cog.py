@@ -2,9 +2,6 @@ import abc
 
 from discord.ext import commands
 
-import tardsquad_discord_bot
-from tardsquad_discord_bot.textcolor import TextColor
-
 
 # See https://github.com/Rapptz/discord.py/blob/master/discord/ext/commands/cog.py#L48
 class CogABCMeta(commands.CogMeta, abc.ABCMeta):

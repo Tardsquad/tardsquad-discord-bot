@@ -5,7 +5,6 @@ import logging
 import os
 import sys
 
-import discord
 from dotenv import load_dotenv
 
 from tardsquad_discord_bot.client import TardsquadClient
