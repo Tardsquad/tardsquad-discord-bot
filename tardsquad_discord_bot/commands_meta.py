@@ -58,6 +58,9 @@ class TardBotMetaCommands(TardBotCog, name="BotMeta"):
 
     @commands.command(help="Get the link to my application deployment status.")
     async def deployment(self, ctx):
-        revision_url = "https://console.cloud.google.com/run/detail/us-central1/tardsquad-discord-bot/revisions?project=tardsquad-discord-bot"
+        revision_url = (
+            "https://console.cloud.google.com/run/detail/us-central1/tardsquad-discord-bot/"
+            "revisions?project=tardsquad-discord-bot"
+        )
         reply = "The latest & ongoing deployments can be found at:\n<{:s}>".format(revision_url)
         await ctx.send(reply)
