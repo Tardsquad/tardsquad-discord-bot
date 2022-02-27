@@ -9,7 +9,7 @@
 [![License](https://img.shields.io/github/license/tardsquad/tardsquad-discord-bot)](https://github.com/tardsquad/tardsquad-discord-bot/blob/master/LICENSE)
 
 
-A Discord chat bot for the Tardsquad guild (Discord name for server).
+A Discord chat bot for the Tardsquad guild (Discord name for server) written in Python with the popular library [discord.py](https://github.com/Rapptz/discord.py) and deployed using Docker at [Cloud Run](https://cloud.google.com/run/).
 
 # Resouces
 * A general tutorial for a Discord bot can be found [here](https://realpython.com/how-to-make-a-discord-bot-python/)
