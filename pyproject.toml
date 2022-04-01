@@ -16,7 +16,7 @@ include = ["CHANGELOG.md", "LICENSE", "README.md"]
 [tool.poetry.dependencies]
 "discord.py" = "^1.7.3"
 python = "^3.7"
-python-dotenv = "^0.19"
+python-dotenv = "^0.20"
 single-source = "^0.2.0"
 requests = "^2.27.1"
 semver = "^2.13.0"
