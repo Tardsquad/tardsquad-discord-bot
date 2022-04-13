@@ -49,5 +49,5 @@ RUN poetry install --no-dev --no-ansi
 
 COPY . .
 
-# We customize how our app is loaded with the custom entrypoint:
+# Start bot
 ENTRYPOINT ["poetry", "run", "tardsquad-discord-bot"]
