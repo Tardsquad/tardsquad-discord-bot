@@ -15,6 +15,9 @@ steps:
   #entrypoint: gcloud
   #args: ['run', 'deploy', 'tardsquad-discord-bot', '--image', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot', '--region', 'us-central1']
 # Deploy container image to Cloud Compute
+# Requires that the Clould Build service account has Compute Engine permissions, which can be set in iAM but easiest at
+#  https://console.cloud.google.com/cloud-build/settings/service-account?project=tardsquad-discord-bot
+# Ref: https://cloud.google.com/compute/docs/containers/deploying-containers#updating_a_container_on_a_vm_instance
 - id: tardsquad-discord-bot-deploy
   name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud

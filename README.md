@@ -126,6 +126,20 @@ $ docker-compose up
   $ gcloud compute instances stop tardbot-vm
   $ gcloud compute instances start tardbot-vm
    ```
+* Force update to latest container image in GCR and reboot VM:
+  ```console
+  $ gcloud compute instances update-container --project=tardsquad-discord-bot --zone=us-central1-a --container-image gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest tardbot-vm
+   ```
+* TODO next time: create [new instance](https://cloud.google.com/compute/docs/containers/deploying-containers#managedinstancegroupcontainer) VM using
+  ```console
+  $ gcloud compute instances create-with-container \
+     --project=tardsquad-discord-bot \
+     --zone=us-central1-a \
+     --container-image gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest \
+     --container-env DISCORD_TOKEN=... \
+     tardbot-vm
+   ```
+
 
 
 # Release & Deploy
