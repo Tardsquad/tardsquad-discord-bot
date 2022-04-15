@@ -9,7 +9,7 @@
 [![License](https://img.shields.io/github/license/tardsquad/tardsquad-discord-bot)](https://github.com/tardsquad/tardsquad-discord-bot/blob/master/LICENSE)
 
 
-A Discord chat bot for the Tardsquad guild (Discord name for server) written in Python with the popular library [discord.py](https://github.com/Rapptz/discord.py) and deployed using Docker at [Cloud Run](https://cloud.google.com/run/).
+A Discord chat bot for the Tardsquad guild (Discord name for server) written in Python with the popular library [discord.py](https://github.com/Rapptz/discord.py) and deployed using Docker at ~[Cloud Run](https://cloud.google.com/run/)~ [Compute Engine](https://cloud.google.com/compute/).
 
 # Resouces
 * A general tutorial for a Discord bot can be found [here](https://realpython.com/how-to-make-a-discord-bot-python/)
@@ -26,7 +26,7 @@ A Discord chat bot for the Tardsquad guild (Discord name for server) written in 
   * ~[Cloud Run Service](https://console.cloud.google.com/run/detail/us-central1/tardsquad-discord-bot/metrics?project=tardsquad-discord-bot) Application that runs our container for the image published to GCR.~
      * The Cloud Run service is disabled by deploying the demo Hello World program, as there is no disable functionality.
   	 * Set to use the container image `gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest`.
-  * [Cloud Computer](https://console.cloud.google.com/compute/instances?project=tardsquad-discord-bot) Where the VM `tardbot-vm` is defined and managed that runs our container for image thepublished to GCR via Cloud Build Triggers.
+  * [Compute Engine](https://console.cloud.google.com/compute/instances?project=tardsquad-discord-bot) Where the VM `tardbot-vm` is defined and managed that runs our container for image thepublished to GCR via Cloud Build Triggers.
     * The envvar `DISCORD_TOKEN` is configured where the container is selected for the VM.
   * [Cloud Build Triggers](https://console.cloud.google.com/cloud-build/triggers?referrer=search&project=tardsquad-discord-bot) Sets up build/push/deploy on git version tag push by pointing to [.google-cloud/cloudbuild.yaml](.google-cloud/cloudbuild.yaml).
   * [Container Registry](https://console.cloud.google.com/gcr/images/tardsquad-discord-bot?project=tardsquad-discord-bot)
@@ -114,7 +114,7 @@ $ docker-compose up
    ```console
    $ docker pull gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest
    ```
-* To ssh in to the Computer VM
+* To ssh in to the Compute VM
   * SSH
   ```console
   $ gcloud compute ssh --project=tardsquad-discord-bot --zone=us-central1-a tardbot-vm
@@ -130,7 +130,7 @@ $ docker-compose up
   ```console
   $ gcloud compute instances update-container --project=tardsquad-discord-bot --zone=us-central1-a --container-image gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest tardbot-vm
    ```
-* TODO next time: create [new instance](https://cloud.google.com/compute/docs/containers/deploying-containers#managedinstancegroupcontainer) VM using
+* TODO next time document: creating a [new VM instance](https://cloud.google.com/compute/docs/containers/deploying-containers#managedinstancegroupcontainer) from scratch using
   ```console
   $ gcloud compute instances create-with-container \
      --project=tardsquad-discord-bot \
