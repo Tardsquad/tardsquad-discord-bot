@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tardsquad-discord-bot"
-version = "1.2.3"
+version = "1.2.4"
 description = "A Discord bot for the Tardsquad guild"
 authors = ["Erik Westrup <erik.westrup@gmail.com>"]
 license = "MIT"
