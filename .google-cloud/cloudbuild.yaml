@@ -18,6 +18,6 @@ steps:
 - id: tardsquad-discord-bot-deploy
   name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['compute', 'instances', 'update-container', 'tardbot-vm',  '--container-image', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest']
+  args: ['compute', 'instances', 'update-container', '--project=tardsquad-discord-bot', '--zone=us-central1-a', '--container-image', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest', 'tardbot-vm']
 images:
 - gcr.io/tardsquad-discord-bot/tardsquad-discord-bot
