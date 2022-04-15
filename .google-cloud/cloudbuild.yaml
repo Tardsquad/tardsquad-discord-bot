@@ -10,9 +10,9 @@ steps:
   name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot']
 # Deploy container image to Cloud Run
-- id: tardsquad-discord-bot-deploy
-  name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: gcloud
-  args: ['run', 'deploy', 'tardsquad-discord-bot', '--image', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot', '--region', 'us-central1']
+#- id: tardsquad-discord-bot-deploy
+  #name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  #entrypoint: gcloud
+  #args: ['run', 'deploy', 'tardsquad-discord-bot', '--image', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot', '--region', 'us-central1']
 images:
 - gcr.io/tardsquad-discord-bot/tardsquad-discord-bot
