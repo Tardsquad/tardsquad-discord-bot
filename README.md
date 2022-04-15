@@ -24,7 +24,10 @@ A Discord chat bot for the Tardsquad guild (Discord name for server) written in 
   * [Application tardsquad-discord-bot-production](https://discord.com/developers/applications/922195559618592799/information)
 * GCP
   * ~[Cloud Run Service](https://console.cloud.google.com/run/detail/us-central1/tardsquad-discord-bot/metrics?project=tardsquad-discord-bot) Application that runs our container for the image published to GCR.~
-  * [Cloud Computer](https://console.cloud.google.com/compute/instances?project=tardsquad-discord-bot) Where the VM `tardbot-vm` is defined and managed that runs our container for image thepublished to GCR via Cloud Build Triggers. The envvar `DISCORD_TOKEN` is configured where the container is selected for the VM.
+     * The Cloud Run service is disabled by deploying the demo Hello World program, as there is no disable functionality.
+  	 * Set to use the container image `gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest`.
+  * [Cloud Computer](https://console.cloud.google.com/compute/instances?project=tardsquad-discord-bot) Where the VM `tardbot-vm` is defined and managed that runs our container for image thepublished to GCR via Cloud Build Triggers.
+    * The envvar `DISCORD_TOKEN` is configured where the container is selected for the VM.
   * [Cloud Build Triggers](https://console.cloud.google.com/cloud-build/triggers?referrer=search&project=tardsquad-discord-bot) Sets up build/push/deploy on git version tag push by pointing to [.google-cloud/cloudbuild.yaml](.google-cloud/cloudbuild.yaml).
   * [Container Registry](https://console.cloud.google.com/gcr/images/tardsquad-discord-bot?project=tardsquad-discord-bot)
     * [Storage Bucket](https://console.cloud.google.com/storage/browser?project=tardsquad-discord-bot&prefix=) for the above containers
