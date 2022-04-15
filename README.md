@@ -23,7 +23,8 @@ A Discord chat bot for the Tardsquad guild (Discord name for server) written in 
   * [Application tardsquad-discord-bot-staging](https://discord.com/developers/applications/921085762190057532/information)
   * [Application tardsquad-discord-bot-production](https://discord.com/developers/applications/922195559618592799/information)
 * GCP
-  * [Cloud Run Service](https://console.cloud.google.com/run/detail/us-central1/tardsquad-discord-bot/metrics?project=tardsquad-discord-bot) Application that runs our container for image published to GCR.
+  * ~[Cloud Run Service](https://console.cloud.google.com/run/detail/us-central1/tardsquad-discord-bot/metrics?project=tardsquad-discord-bot) Application that runs our container for the image published to GCR.~
+  * [Cloud Computer](https://console.cloud.google.com/compute/instances?project=tardsquad-discord-bot) Where the VM `tardbot-vm` is defined and managed that runs our container for image thepublished to GCR via Cloud Build Triggers. The envvar `DISCORD_TOKEN` is configured where the container is selected for the VM.
   * [Cloud Build Triggers](https://console.cloud.google.com/cloud-build/triggers?referrer=search&project=tardsquad-discord-bot) Sets up build/push/deploy on git version tag push by pointing to [.google-cloud/cloudbuild.yaml](.google-cloud/cloudbuild.yaml).
   * [Container Registry](https://console.cloud.google.com/gcr/images/tardsquad-discord-bot?project=tardsquad-discord-bot)
     * [Storage Bucket](https://console.cloud.google.com/storage/browser?project=tardsquad-discord-bot&prefix=) for the above containers
@@ -88,16 +89,40 @@ $ docker-compose up
 ```
 
 * Drop in to a shell like
-```console
-$ docker run --env-file=.env --rm -it --entrypoint bash tardsquad-discord-bot
-```
+  * New container
+  ```console
+  $ docker run --env-file=.env --rm -it --entrypoint bash tardsquad-discord-bot
+  ```
+  * Runnning container
+  ```console
+  $ docker ps
+  $ docker exec -it <container-id> bash
+  ```
 
+
+## GCloud
+* First setup
+  * Install gcloud cli e.g. `$ brew install google-cloud-sdk`
+  * Set up first time
+  ```console
+  $ gcloud init
+   ```
 * To pull a Docker image stored in Google Cloud Registry:
-```console
-$ brew install google-cloud-sdk
-$ gcloud auth login
-$ docker pull gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest
-```
+   ```console
+   $ docker pull gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest
+   ```
+* To ssh in to the Computer VM
+  * SSH
+  ```console
+  $ gcloud compute ssh --project=tardsquad-discord-bot --zone=us-central1-a tardbot-vm
+  $ # or if defaults were set in gcloud-init
+  $ gcloud compute ssh tardbot-vm
+   ```
+* Restart the VM
+  ```console
+  $ gcloud compute instances stop tardbot-vm
+  $ gcloud compute instances start tardbot-vm
+   ```
 
 
 # Release & Deploy

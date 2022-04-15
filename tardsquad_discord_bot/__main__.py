@@ -7,12 +7,12 @@ import sys
 
 from dotenv import load_dotenv
 
+# from tardsquad_discord_bot.gcp_port import start_gcp_port
 from tardsquad_discord_bot.client import TardsquadClient
 from tardsquad_discord_bot.commands_general import TardBotGeneralCommands
 from tardsquad_discord_bot.commands_meta import TardBotMetaCommands
 from tardsquad_discord_bot.commands_rating import TardBotRatingCommands
 from tardsquad_discord_bot.commands_search import TardBotSearchCommands
-from tardsquad_discord_bot.gcp_port import start_gcp_port
 from tardsquad_discord_bot.interceptors import TardBotInterceptors
 
 
@@ -33,14 +33,14 @@ def read_conf():
     load_dotenv()
     token = os.getenv("DISCORD_TOKEN")
     guild = os.getenv("GUILD", "tardsquad")
-    port = int(os.getenv("PORT", "8080"))
-    return token, guild, port
+    # port = int(os.getenv("PORT", "8080"))
+    return token, guild
 
 
 def main():
     setup_logging()
-    token, guild, port = read_conf()
-    start_gcp_port(port)
+    token, guild = read_conf()
+    # start_gcp_port(port)
 
     bot = TardsquadClient()
     bot.add_cog(TardBotGeneralCommands(bot, guild))
