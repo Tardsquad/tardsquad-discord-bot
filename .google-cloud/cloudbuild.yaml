@@ -14,5 +14,10 @@ steps:
   #name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   #entrypoint: gcloud
   #args: ['run', 'deploy', 'tardsquad-discord-bot', '--image', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot', '--region', 'us-central1']
+# Deploy container image to Cloud Compute
+- id: tardsquad-discord-bot-deploy
+  name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['compute', 'instances', 'update-container', 'tardbot-vm',  '--container-image', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest']
 images:
 - gcr.io/tardsquad-discord-bot/tardsquad-discord-bot
