@@ -5,12 +5,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-### Modified
+
+## [1.2.5] - 2022-04-15
+### Fixed
+- Deployment URL to Cloud Build
 
 ## [1.2.0] - 2022-04-15
+### Modified
 - Move from Google Cloud Run to Compute to reduce expenses.
 
 ## [1.1.0] - 2022-01-31
+### Modified
 - Improve release commands by using poetry version bump feature.
 
 ## [1.0.0] - 2022-01-31
