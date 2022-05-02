@@ -32,7 +32,8 @@ A Discord chat bot for the Tardsquad guild (Discord name for server) written in 
   * [Container Registry](https://console.cloud.google.com/gcr/images/tardsquad-discord-bot?project=tardsquad-discord-bot)
     * [Storage Bucket](https://console.cloud.google.com/storage/browser?project=tardsquad-discord-bot&prefix=) for the above containers
   * [Service Account](https://console.cloud.google.com/iam-admin/serviceaccounts/details/100468477191441270091?project=tardsquad-discord-bot&supportedpurview=project) used to publish Docker images to GCR.
-  * [Secret Manager](https://console.cloud.google.com/security/secret-manager/secret/) is where `DISCORD_TOKEN` is stored, which is hooked up as envvar in the Cloud Run service.
+  * ~[Secret Manager](https://console.cloud.google.com/security/secret-manager/secret/) is where `DISCORD_TOKEN` is stored, which is hooked up as envvar in the Cloud Run service.~
+    * Envvars are managed directly in Compute Engine now.
 
 
 
