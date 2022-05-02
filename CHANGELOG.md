@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.6] - 2022-05-02
+### Fixed
+- Fix GCP Image Registry retention
+
 ## [1.2.5] - 2022-04-15
 ### Fixed
 - Deployment URL to Cloud Build
