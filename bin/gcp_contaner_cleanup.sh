@@ -7,10 +7,8 @@ IMAGE_NAME=gcr.io/tardsquad-discord-bot/tardsquad-discord-bot
 RETENTION_IMAGES=5  # Keep X latest images.
 
 digests=$(gcloud container images list-tags $IMAGE_NAME --format=json | awk '/digest/{ print $2 }' | sed -e 's/^"//' -e 's/.\{2\}$//' | tail -n +$((RETENTION_IMAGES+1)))
-test -n "$digest" || exit 0
+test -n "$digests" || exit 0
 
 for digest in "$digests"; do
-		#gcloud container images -q delete $IMAGE_NAME@$digest;
-		echo "$digest"
-		test $? -eq 0 && echo "Deleted $digest" || echo "ERROR deleting $diest" >&2
-done;
+		gcloud container images -q delete $IMAGE_NAME@$digest
+done
