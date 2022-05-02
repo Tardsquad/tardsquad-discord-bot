@@ -10,5 +10,5 @@ digests=$(gcloud container images list-tags $IMAGE_NAME --format=json | awk '/di
 test -n "$digests" || exit 0
 
 for digest in "$digests"; do
-		gcloud container images -q delete $IMAGE_NAME@$digest
+	gcloud container images -q delete $IMAGE_NAME@$digest
 done
