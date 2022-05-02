@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2022-05-02
+### Added
+- GCP container registry cleanup script.
+
 ## [1.2.6] - 2022-05-02
 ### Fixed
 - Fix GCP Image Registry retention
