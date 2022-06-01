@@ -4,16 +4,16 @@ steps:
 # Build the container image
 - id: tardsquad-discord-bot-build
   name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot', '.']
+  args: ['build', '-t', 'us.gcr.io/tardsquad-discord-bot/tardsquad-discord-bot', '.']
 # Push the container image to Container Registry
 - id: tardsquad-discord-bot-push
   name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot']
+  args: ['push', 'us.gcr.io/tardsquad-discord-bot/tardsquad-discord-bot']
 # Deploy container image to Cloud Run
 #- id: tardsquad-discord-bot-deploy
   #name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   #entrypoint: gcloud
-  #args: ['run', 'deploy', 'tardsquad-discord-bot', '--image', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot', '--region', 'us-central1']
+  #args: ['run', 'deploy', 'tardsquad-discord-bot', '--image', 'us.gcr.io/tardsquad-discord-bot/tardsquad-discord-bot', '--region', 'us-central1']
 # Deploy container image to Compute Engine
 # Requires that the Clould Build service account has Compute Engine permissions, which can be set in iAM but easiest at
 #  https://console.cloud.google.com/cloud-build/settings/service-account?project=tardsquad-discord-bot
@@ -21,6 +21,6 @@ steps:
 - id: tardsquad-discord-bot-deploy
   name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['compute', 'instances', 'update-container', '--project=tardsquad-discord-bot', '--zone=us-central1-a', '--container-image', 'gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest', 'tardbot-vm']
+  args: ['compute', 'instances', 'update-container', '--project=tardsquad-discord-bot', '--zone=us-central1-a', '--container-image', 'us.gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest', 'tardbot-vm']
 images:
-- gcr.io/tardsquad-discord-bot/tardsquad-discord-bot
+- us.gcr.io/tardsquad-discord-bot/tardsquad-discord-bot

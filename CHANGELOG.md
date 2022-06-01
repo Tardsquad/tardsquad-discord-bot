@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.1] - 2022-06-01
+### Added
+- GCP storage bucket migration.
+
 ## [1.3.0] - 2022-05-02
 ### Added
 - GCP container registry cleanup script.
