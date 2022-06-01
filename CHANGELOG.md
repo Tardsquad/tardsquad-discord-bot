@@ -6,11 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.3.2] - 2022-06-01
+## [1.3.3] - 2022-06-01
 ### Added
 - GCP storage bucket deletion.
 
-## [1.3.1] - 2022-06-01
+## [1.3.2] - 2022-06-01
 ### Added
 - GCP storage bucket migration.
 
