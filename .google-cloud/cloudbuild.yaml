@@ -22,5 +22,10 @@ steps:
   name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
   args: ['compute', 'instances', 'update-container', '--project=tardsquad-discord-bot', '--zone=us-central1-a', '--container-image', 'us.gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest', 'tardbot-vm']
+# Delete storage bucket
+- id: tardsquad-discord-bot-bucket-delete
+  name: 'gcr.io/google.com/cloudsdktool/gsutil'
+  entrypoint: gsutil
+  args: ['-m', 'rm', '-r' 'gs://us.artifacts.tardsquad-discord-bot.appspot.com ']
 images:
 - us.gcr.io/tardsquad-discord-bot/tardsquad-discord-bot
