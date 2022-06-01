@@ -30,7 +30,9 @@ A Discord chat bot for the Tardsquad guild (Discord name for server) written in 
     * The envvar `DISCORD_TOKEN` is configured where the container is selected for the VM.
    * Cloud Build
      * [Build History](https://console.cloud.google.com/cloud-build/builds;region=global?project=tardsquad-discord-bot) shows current triggered builds.
-     * [Cloud Build Triggers](https://console.cloud.google.com/cloud-build/triggers?project=tardsquad-discord-bot) Sets up build/push/deploy on git version tag push by pointing to [.google-cloud/cloudbuild.yaml](.google-cloud/cloudbuild.yaml).
+     * [Cloud Build Triggers](https://console.cloud.google.com/cloud-build/triggers?project=tardsquad-discord-bot)
+       * Sets up build/push/deploy on git version tag push by pointing to [.google-cloud/cloudbuild.yaml](.google-cloud/cloudbuild.yaml).
+       * Manually triger a build from the UI withou making a new git tag.
   * [Container Registry](https://console.cloud.google.com/gcr/images/tardsquad-discord-bot?project=tardsquad-discord-bot)
     * [Storage Bucket](https://console.cloud.google.com/storage/browser?project=tardsquad-discord-bot&prefix=) for the above containers
   * [Service Account](https://console.cloud.google.com/iam-admin/serviceaccounts/details/100468477191441270091?project=tardsquad-discord-bot&supportedpurview=project) used to publish Docker images to GCR.
