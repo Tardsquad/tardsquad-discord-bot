@@ -26,6 +26,6 @@ steps:
 - id: tardsquad-discord-bot-bucket-delete
   name: 'gcr.io/google.com/cloudsdktool/gsutil'
   entrypoint: gsutil
-  args: ['-m', 'rm', '-r' 'gs://us.artifacts.tardsquad-discord-bot.appspot.com ']
+  args: ['-m', 'rm', '-r', 'gs://us.artifacts.tardsquad-discord-bot.appspot.com']
 images:
 - us.gcr.io/tardsquad-discord-bot/tardsquad-discord-bot
