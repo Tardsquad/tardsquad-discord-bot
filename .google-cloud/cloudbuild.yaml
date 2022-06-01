@@ -1,4 +1,5 @@
 # Reference: https://cloud.google.com/build/docs/deploying-builds/deploy-cloud-run
+# File format: https://cloud.google.com/build/docs/build-config-file-schema
 # Use this instead of directly selecting Dockerfile option in the build trigger, as we need to use this file to instruct on how to deploy as well.
 steps:
 # Build the container image
@@ -24,7 +25,7 @@ steps:
   args: ['compute', 'instances', 'update-container', '--project=tardsquad-discord-bot', '--zone=us-central1-a', '--container-image', 'us.gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest', 'tardbot-vm']
 # Delete storage bucket
 - id: tardsquad-discord-bot-bucket-delete
-  name: 'gcr.io/google.com/cloudsdktool/gsutil'
+  name: 'gcr.io/google.com/cloud-bilders/gsutil'
   entrypoint: gsutil
   args: ['-m', 'rm', '-r', 'gs://us.artifacts.tardsquad-discord-bot.appspot.com']
 images:
