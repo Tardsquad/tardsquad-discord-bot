@@ -24,8 +24,11 @@ steps:
   entrypoint: gcloud
   args: ['compute', 'instances', 'update-container', '--project=tardsquad-discord-bot', '--zone=us-central1-a', '--container-image', 'us.gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest', 'tardbot-vm']
 # Delete storage bucket
+# Container Registry automatically creates a Cloud Storage Bucket that is multi-regional. However the free tier for Cloud Storage only has regional included.
+# Possible workaround is to use a custom build trigger: https://stackoverflow.com/a/60983361/265508
+# Another hack: delete undelaying Bucket after deployment: https://stackoverflow.com/a/70821159/265508
 - id: tardsquad-discord-bot-bucket-delete
-  name: 'gcr.io/google.com/cloud-bilders/gsutil'
+  name: 'gcr.io/cloud-builders/gsutil'
   entrypoint: gsutil
   args: ['-m', 'rm', '-r', 'gs://us.artifacts.tardsquad-discord-bot.appspot.com']
 images:
