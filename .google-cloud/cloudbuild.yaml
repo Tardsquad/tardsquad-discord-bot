@@ -27,6 +27,8 @@ steps:
 # Container Registry automatically creates a Cloud Storage Bucket that is multi-regional. However the free tier for Cloud Storage only has regional included.
 # Possible workaround is to use a custom build trigger: https://stackoverflow.com/a/60983361/265508
 # Another hack: delete undelaying Bucket after deployment: https://stackoverflow.com/a/70821159/265508
+# Con: can't reboot the Compute Engine VM, as the image is now gone. Instead have to trigger a rebuild from Trigger UI.
+# Note: the command succeeds and prints deleted files, but they are still visible in the bucket UI...
 - id: tardsquad-discord-bot-bucket-delete
   name: 'gcr.io/cloud-builders/gsutil'
   entrypoint: gsutil
