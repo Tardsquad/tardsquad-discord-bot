@@ -18,7 +18,7 @@ include = ["CHANGELOG.md", "LICENSE", "README.md"]
 python = "^3.7"
 python-dotenv = "^0.20"
 single-source = "^0.3.0"
-requests = "^2.27.1"
+requests = "^2.28.1"
 semver = "^2.13.0"
 
 [tool.poetry.dev-dependencies]
