@@ -46,10 +46,10 @@ Make sure to use a supported python version. See the key `python` in the section
 
 ## TL;DR The Easy Way
 * Get the discord token by asking [@erikw](https://github.com/erikw) or from the bot tab in the [tardsquad-discord-bot](https://discord.com/developers/applications/921085762190057532/bot) application in the Discord developer portal
-```console
-$ git clone https://github.com/tardsquad/tardsquad-discord-bot.git && cd $(basename "$_" .git)
-$ echo "DISCORD_TOKEN=the-token" > .env
-$ docker-compose up
+```shell
+git clone https://github.com/tardsquad/tardsquad-discord-bot.git && cd $(basename "$_" .git)
+echo "DISCORD_TOKEN=the-token" > .env
+docker-compose up
 ```
 
 Continue reading for how to setup local development envionment, with our without Docker below:
@@ -59,52 +59,52 @@ Continue reading for how to setup local development envionment, with our without
 * Reference for how to structure a python project: https://realpython.com/pypi-publish-python-package/
 
 * Clone this git
-```console
-$ git clone https://github.com/tardsquad/tardsquad-discord-bot.git
-$ cd tardsquad-discord-bot
+```shell
+git clone https://github.com/tardsquad/tardsquad-discord-bot.git
+cd tardsquad-discord-bot
 ```
 * Install Poetry
-```console
-$ pip install poetry
+```shell
+pip install poetry
 ```
 * Install project dependencies
-```console
-$ poetry install
+```shell
+poetry install
 ```
 
 * Set up envionment. We must make sure to only use the staging envionment so that our local runs don't endup in production the server. Fetch the bot token from the bot tab in the [tardsquad-discord-bot-staging](https://discord.com/developers/applications/921085762190057532/bot) application in the Discord developer portal. Either set this as as an envionmental variable together with the guild (server name), or more preffered in the git-ignored `.env` file in the project directory:
-```console
-$ echo "DISCORD_TOKEN=the-token" > .env
+```shell
+echo "DISCORD_TOKEN=the-token" > .env
 ```
 
 * Now tardsquad-discord-bot should work!
-```console
-$ poetry run tardsquad-discord-bot
+```shell
+poetry run tardsquad-discord-bot
 ```
 
 * To install locally:
-```console
-$ poetry build
-$ pip install dist/tardsquad_discord_bot-*.whl
+```shell
+poetry build
+pip install dist/tardsquad_discord_bot-*.whl
 ```
 
 * Build and run Docker image using the local `.env` file with secrets:
-```console
-$ docker build -t tardsquad-discord-bot .
-$ docker run --env-file=.env -t tardsquad-discord-bot
-$ # or more simply
-$ docker-compose up
+```shell
+docker build -t tardsquad-discord-bot .
+docker run --env-file=.env -t tardsquad-discord-bot
+# or more simply
+docker-compose up
 ```
 
 * Drop in to a shell like
   * New container
-  ```console
-  $ docker run --env-file=.env --rm -it --entrypoint bash tardsquad-discord-bot
+  ```shell
+  docker run --env-file=.env --rm -it --entrypoint bash tardsquad-discord-bot
   ```
   * Runnning container
-  ```console
-  $ docker ps
-  $ docker exec -it <container-id> bash
+  ```shell
+  docker ps
+  docker exec -it <container-id> bash
   ```
 
 
@@ -112,32 +112,32 @@ $ docker-compose up
 * First setup
   * Install gcloud cli e.g. `$ brew install google-cloud-sdk`
   * Set up first time
-  ```console
-  $ gcloud init
+  ```shell
+  gcloud init
    ```
 * To pull a Docker image stored in Google Cloud Registry:
-   ```console
-   $ docker pull gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest
+   ```shell
+   docker pull gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest
    ```
 * To ssh in to the Compute VM
   * SSH
-  ```console
-  $ gcloud compute ssh --project=tardsquad-discord-bot --zone=us-central1-a tardbot-vm
-  $ # or if defaults were set in gcloud-init
-  $ gcloud compute ssh tardbot-vm
+  ```shell
+  gcloud compute ssh --project=tardsquad-discord-bot --zone=us-central1-a tardbot-vm
+  # or if defaults were set in gcloud-init
+  gcloud compute ssh tardbot-vm
    ```
 * Restart the VM
-  ```console
-  $ gcloud compute instances stop tardbot-vm
-  $ gcloud compute instances start tardbot-vm
+  ```shell
+  gcloud compute instances stop tardbot-vm
+  gcloud compute instances start tardbot-vm
    ```
 * Force update to latest container image in GCR and reboot VM:
-  ```console
-  $ gcloud compute instances update-container --project=tardsquad-discord-bot --zone=us-central1-a --container-image gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest tardbot-vm
+  ```shell
+  gcloud compute instances update-container --project=tardsquad-discord-bot --zone=us-central1-a --container-image gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest tardbot-vm
    ```
 * TODO next time document: creating a [new VM instance](https://cloud.google.com/compute/docs/containers/deploying-containers#managedinstancegroupcontainer) from scratch using
-  ```console
-  $ gcloud compute instances create-with-container \
+  ```shell
+  gcloud compute instances create-with-container \
      --project=tardsquad-discord-bot \
      --zone=us-central1-a \
      --container-image gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest \
@@ -149,15 +149,15 @@ $ docker-compose up
 
 # Release & Deploy
 * First verify that the bot works
-  ```console
-  $ poetry run tardsquad-discord-bot
-  $ docker-compose up
+  ```shell
+  poetry run tardsquad-discord-bot
+  docker-compose up
   ```
 * Now update version and create corresponding git tag
-  ```console
-  $ vi CHANGELOG.md
-  $ poetry version minor && ver="v$(poetry version -s)"
-  $ git commit -am "Bump version to $ver" && git tag $ver && git push --atomic origin main $ver
+  ```shell
+  vi CHANGELOG.md
+  poetry version minor && ver="v$(poetry version -s)"
+  git commit -am "Bump version to $ver" && git tag $ver && git push --atomic origin main $ver
   ```
 * A newly pushed tag with the pattern `v.*` will trigger a [Cloud Build Triggers](https://console.cloud.google.com/cloud-build/triggers?referrer=search&project=tardsquad-discord-bot). This build trigger will execute [.google-cloud/cloudbuild.yaml](.google-cloud/cloudbuild.yaml). The last step will spin up a container for the new image at for the [Cloud Run Service](https://console.cloud.google.com/run/detail/us-central1/tardsquad-discord-bot/metrics?project=tardsquad-discord-bot) that runs our container for image published to GCR.
 * Head over to the production discord and try a command like `!version` and it should work!
