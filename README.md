@@ -6,6 +6,8 @@
 [![Latest SemVer Tag](https://img.shields.io/github/v/tag/tardsquad/tardsquad-discord-bot?sort=semver&label=Latest%20Release&logo=linuxcontainers)](https://github.com/Tardsquad/tardsquad-discord-bot/tags)
 [![OSS Lifecycle](https://img.shields.io/osslifecycle/tardsquad/tardsquad-discord-bot)](https://github.com/Netflix/osstracker)
 [![SLOC](https://img.shields.io/tokei/lines/github/tardsquad/tardsquad-discord-bot?logo=codefactor&logoColor=lightgrey)](#)
+[![Number of programming languages used](https://img.shields.io/github/languages/count/tardsquad/tardsquad-discord-bot)](#)
+[![Top programming languages used](https://img.shields.io/github/languages/top/tardsquad/tardsquad-discord-bot)](#)
 [![License](https://img.shields.io/github/license/tardsquad/tardsquad-discord-bot)](https://github.com/tardsquad/tardsquad-discord-bot/blob/master/LICENSE)
 
 
