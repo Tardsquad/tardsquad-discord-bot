@@ -28,13 +28,13 @@ A Discord chat bot for the Tardsquad guild (Discord name for server) written in 
   * ~[Cloud Run Service](https://console.cloud.google.com/run/detail/us-central1/tardsquad-discord-bot/metrics?project=tardsquad-discord-bot) Application that runs our container for the image published to GCR.~
      * The Cloud Run service is disabled by deploying the demo Hello World program, as there is no disable functionality.
   	 * Set to use the container image `gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest`.
-  * [Compute Engine](https://console.cloud.google.com/compute/instances?project=tardsquad-discord-bot) Where the VM `tardbot-vm` is defined and managed that runs our container for image thepublished to GCR via Cloud Build Triggers.
+  * [Compute Engine](https://console.cloud.google.com/compute/instances?project=tardsquad-discord-bot) Where the VM `tardbot-vm` is defined and managed, which runs our container for the image published to GCR via Cloud Build Triggers.
     * The envvar `DISCORD_TOKEN` is configured where the container is selected for the VM.
    * Cloud Build
      * [Build History](https://console.cloud.google.com/cloud-build/builds;region=global?project=tardsquad-discord-bot) shows current triggered builds.
      * [Cloud Build Triggers](https://console.cloud.google.com/cloud-build/triggers?project=tardsquad-discord-bot)
        * Sets up build/push/deploy on git version tag push by pointing to [.google-cloud/cloudbuild.yaml](.google-cloud/cloudbuild.yaml).
-       * Manually triger a build from the UI withou making a new git tag.
+       * Manually trigger a build from the UI without making a new git tag.
   * [Container Registry](https://console.cloud.google.com/gcr/images/tardsquad-discord-bot?project=tardsquad-discord-bot)
     * [Storage Bucket](https://console.cloud.google.com/storage/browser?project=tardsquad-discord-bot&prefix=) for the above containers
   * [Service Account](https://console.cloud.google.com/iam-admin/serviceaccounts/details/100468477191441270091?project=tardsquad-discord-bot&supportedpurview=project) used to publish Docker images to GCR.
@@ -44,7 +44,7 @@ A Discord chat bot for the Tardsquad guild (Discord name for server) written in 
 
 
 # Development
-Make sure to use a supported python version. See the key `python` in the section `tool.poetry.dependencies` at [pyproject.toml](https://github.com/tardsquad/tardsquad-discord-bot/blob/master/pyproject.toml). It's recommended to install e.g. `pyenv` to manage python versions.
+Make sure to use a supported Python version. See the key `python` in the section `tool.poetry.dependencies` at [pyproject.toml](https://github.com/tardsquad/tardsquad-discord-bot/blob/master/pyproject.toml). It's recommended to install e.g., `pyenv` to manage Python versions.
 
 ## TL;DR The Easy Way
 * Get the discord token by asking [@erikw](https://github.com/erikw) or from the bot tab in the [tardsquad-discord-bot](https://discord.com/developers/applications/921085762190057532/bot) application in the Discord developer portal
@@ -54,11 +54,11 @@ echo "DISCORD_TOKEN=the-token" > .env
 docker-compose up
 ```
 
-Continue reading for how to setup local development envionment, with our without Docker below:
+Continue reading for how to set up a local development environment, with or without Docker, below:
 
 ## More Elaborate
 * Make sure to `$ poetry shell` before using tools like pyright LSP, so that it can find the installed dependency modules
-* Reference for how to structure a python project: https://realpython.com/pypi-publish-python-package/
+* Reference for how to structure a Python project: https://realpython.com/pypi-publish-python-package/
 
 * Clone this git
 ```shell
@@ -74,7 +74,7 @@ pip install poetry
 poetry install
 ```
 
-* Set up envionment. We must make sure to only use the staging envionment so that our local runs don't endup in production the server. Fetch the bot token from the bot tab in the [tardsquad-discord-bot-staging](https://discord.com/developers/applications/921085762190057532/bot) application in the Discord developer portal. Either set this as as an envionmental variable together with the guild (server name), or more preffered in the git-ignored `.env` file in the project directory:
+* Set up environment. We must make sure to only use the staging environment so that our local runs don't end up on the production server. Fetch the bot token from the bot tab in the [tardsquad-discord-bot-staging](https://discord.com/developers/applications/921085762190057532/bot) application in the Discord developer portal. Either set this as an environmental variable together with the guild (server name), or more preferred in the git-ignored `.env` file in the project directory:
 ```shell
 echo "DISCORD_TOKEN=the-token" > .env
 ```
@@ -92,18 +92,18 @@ pip install dist/tardsquad_discord_bot-*.whl
 
 * Build and run Docker image using the local `.env` file with secrets:
 ```shell
-docker build -t tardsquad-discord-bot .
+docker build -t tardsquad-discord-bot.
 docker run --env-file=.env -t tardsquad-discord-bot
 # or more simply
 docker-compose up
 ```
 
-* Drop in to a shell like
+* Drop into a shell like
   * New container
   ```shell
   docker run --env-file=.env --rm -it --entrypoint bash tardsquad-discord-bot
   ```
-  * Runnning container
+  * Running container
   ```shell
   docker ps
   docker exec -it <container-id> bash
@@ -121,7 +121,7 @@ docker-compose up
    ```shell
    docker pull gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest
    ```
-* To ssh in to the Compute VM
+* To ssh into the Compute VM
   * SSH
   ```shell
   gcloud compute ssh --project=tardsquad-discord-bot --zone=us-central1-a tardbot-vm
@@ -133,7 +133,7 @@ docker-compose up
   gcloud compute instances stop tardbot-vm
   gcloud compute instances start tardbot-vm
    ```
-* Force update to latest container image in GCR and reboot VM:
+* Force update to the latest container image in GCR and reboot VM:
   ```shell
   gcloud compute instances update-container --project=tardsquad-discord-bot --zone=us-central1-a --container-image gcr.io/tardsquad-discord-bot/tardsquad-discord-bot:latest tardbot-vm
    ```
@@ -150,19 +150,19 @@ docker-compose up
 
 
 # Release & Deploy
-* First verify that the bot works
+* First, verify that the bot works
   ```shell
   poetry run tardsquad-discord-bot
   docker-compose up
   ```
-* Now update version and create corresponding git tag
+* Now update the version and create the corresponding git tag
   ```shell
   vi CHANGELOG.md
   poetry version minor && ver="v$(poetry version -s)"
   git commit -am "Bump version to $ver" && git tag $ver && git push --atomic origin main $ver
   ```
-* A newly pushed tag with the pattern `v.*` will trigger a [Cloud Build Triggers](https://console.cloud.google.com/cloud-build/triggers?referrer=search&project=tardsquad-discord-bot). This build trigger will execute [.google-cloud/cloudbuild.yaml](.google-cloud/cloudbuild.yaml). The last step will spin up a container for the new image at for the [Cloud Run Service](https://console.cloud.google.com/run/detail/us-central1/tardsquad-discord-bot/metrics?project=tardsquad-discord-bot) that runs our container for image published to GCR.
+* A newly pushed tag with the pattern `v.*` will trigger a [Cloud Build Triggers](https://console.cloud.google.com/cloud-build/triggers?referrer=search&project=tardsquad-discord-bot). This build trigger will execute [.google-cloud/cloudbuild.yaml](.google-cloud/cloudbuild.yaml). The last step will spin up a container for the new image for the [Cloud Run Service](https://console.cloud.google.com/run/detail/us-central1/tardsquad-discord-bot/metrics?project=tardsquad-discord-bot) that runs our container for the image published to GCR.
 * Head over to the production discord and try a command like `!version` and it should work!
 
 # Known Issues
-* Even though the Cloud Run revision is configured to only have one container active at once, on a new deploymet the old one will live on for a while. This means that for some moment of time, multiple instances of the bot-client will be conntected and thus one will multiple replies on commands. Cloud Run is designed for web services, not chat bots :).
+* Even though the Cloud Run revision is configured to only have one container active at once, on a new deployment, the old one will live on for a while. This means that for some moment of time, multiple instances of the bot-client will be connected and thus one will receive multiple replies to commands. Cloud Run is designed for web services, not chatbots :).
